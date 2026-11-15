@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muramasa 2K — Upscaled vs Denoise Swipe Compare</title>
+  <style>
+    :root {
+      --bg: #080a0e;
+      --panel: #11151d;
+      --border: #1f2735;
+      --text: #e6edf7;
+      --muted: #8b9bb4;
+      --cyan: #00d2ff;
+      --green: #6ee7a8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      z-index: 10;
+    }
+    .left-group { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .back-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    .back-link:hover { color: var(--text); border-color: var(--cyan); }
+    h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.4px; }
+    .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pill {
+      background: #181e29;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .pill.active {
+      background: rgba(0, 210, 255, 0.14);
+      border-color: var(--cyan);
+      color: #fff;
+    }
+    .controls { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+    .btn {
+      background: #181e29;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn:hover { border-color: var(--cyan); }
+    .stage {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      cursor: ew-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050608;
+    }
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-origin: center center;
+    }
+    .canvas-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .img-before { z-index: 2; }
+    .img-after { z-index: 1; }
+    .divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .handle {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(17, 21, 29, 0.92);
+      border: 2px solid var(--cyan);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      z-index: 6;
+      pointer-events: none;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+    }
+    .tag {
+      position: absolute;
+      top: 14px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      z-index: 4;
+      background: rgba(8, 10, 14, 0.8);
+      border: 1px solid var(--border);
+      pointer-events: none;
+    }
+    .tag-left { left: 14px; color: var(--green); border-color: rgba(110, 231, 168, 0.4); }
+    .tag-right { right: 14px; color: var(--cyan); border-color: rgba(0, 210, 255, 0.4); }
+    footer {
+      background: var(--panel);
+      border-top: 1px solid var(--border);
+      padding: 6px 18px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-group">
+      <a class="back-link" href="index.html">&larr; Dashboard</a>
+      <h1>Swipe Compare: 4x DAT2 vs 4x FDAT XL Denoise (Lossless 2560&times;1440)</h1>
+      <div class="pills" id="sample-pills"></div>
+    </div>
+    <div class="controls">
+      <span id="zoom-lbl">Zoom: 1.0x</span>
+      <button class="btn" onclick="setZoom(1)">1x</button>
+      <button class="btn" onclick="setZoom(2.5)">2.5x</button>
+      <button class="btn" onclick="setZoom(4)">4x</button>
+      <button class="btn" onclick="resetView()">Reset</button>
+    </div>
+  </header>
+
+  <div class="stage" id="stage">
+    <div class="tag tag-left">LEFT: UPSCALED 2K (4x DAT2)</div>
+    <div class="tag tag-right">RIGHT: + DENOISE (4x FDAT XL)</div>
+
+    <div class="canvas-wrap" id="wrap">
+      <img class="img-after" id="img-after" src="" alt="Denoised">
+      <img class="img-before" id="img-before" src="" alt="Upscaled">
+    </div>
+
+    <div class="divider" id="divider" style="left: 50%;"></div>
+    <div class="handle" id="handle" style="left: 50%;">&harr;</div>
+  </div>
+
+  <footer>
+    <span>Drag / move horizontally to swipe &bull; Scroll wheel to zoom &bull; Right-click or Shift+drag to pan</span>
+    <span id="stats-lbl">Diff: --</span>
+  </footer>
+
+  <script>
+    const SAMPLES = [
+      { id: 'bg001_a01', label: 'bg001_空a_01', stats: 'Mean diff: 0.438/255 | Changed (>2): 0.4% | 123.3s' },
+      { id: 'bg001_a02', label: 'bg001_空a_02', stats: 'Mean diff: 0.581/255 | Changed (>2): 0.4% | 122.7s' },
+      { id: 'bg001_c03', label: 'bg001_空c_03', stats: 'Mean diff: 0.189/255 | Changed (>2): 0.4% | 123.9s' },
+      { id: 'bg001_d03', label: 'bg001_空d_03', stats: 'Mean diff: 0.197/255 | Changed (>2): 0.8% | 124.5s' },
+    ];
+
+    let splitPct = 50;
+    let zoom = 1;
+    let panX = 0, panY = 0;
+    let isPanning = false;
+    let isSwiping = false;
+    let startX = 0, startY = 0;
+
+    const stage = document.getElementById('stage');
+    const wrap = document.getElementById('wrap');
+    const imgBefore = document.getElementById('img-before');
+    const imgAfter = document.getElementById('img-after');
+    const divider = document.getElementById('divider');
+    const handle = document.getElementById('handle');
+    const zoomLbl = document.getElementById('zoom-lbl');
+    const statsLbl = document.getElementById('stats-lbl');
+
+    function renderTransform() {
+      wrap.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+      zoomLbl.textContent = `Zoom: ${zoom.toFixed(1)}x`;
+      applySplit();
+    }
+
+    function applySplit() {
+      divider.style.left = splitPct + '%';
+      handle.style.left = splitPct + '%';
+      const rect = stage.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      const screenX = rect.left + (splitPct / 100) * rect.width;
+      const relInWrap = ((screenX - wrapRect.left) / wrapRect.width) * 100;
+      const clamped = Math.max(0, Math.min(100, relInWrap));
+      imgBefore.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+    }
+
+    function setZoom(z) {
+      zoom = Math.max(1, Math.min(8, z));
+      if (zoom === 1) { panX = 0; panY = 0; }
+      renderTransform();
+    }
+
+    function resetView() {
+      zoom = 1; panX = 0; panY = 0; splitPct = 50;
+      renderTransform();
+    }
+
+    function selectSample(s, btn) {
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      imgBefore.src = `compare_samples/${s.id}_up.webp`;
+      imgAfter.src = `compare_samples/${s.id}_dn.webp`;
+      statsLbl.textContent = s.stats;
+      applySplit();
+    }
+
+    const pills = document.getElementById('sample-pills');
+    SAMPLES.forEach((s, idx) => {
+      const b = document.createElement('button');
+      b.className = 'pill' + (idx === 0 ? ' active' : '');
+      b.textContent = s.label;
+      b.onclick = () => selectSample(s, b);
+      pills.appendChild(b);
+    });
+    selectSample(SAMPLES[0], pills.firstChild);
+
+    stage.addEventListener('contextmenu', e => e.preventDefault());
+    stage.addEventListener('mousedown', e => {
+      if (e.button === 2 || e.shiftKey) {
+        isPanning = true;
+        startX = e.clientX - panX;
+        startY = e.clientY - panY;
+        stage.style.cursor = 'grabbing';
+      } else {
+        isSwiping = true;
+        const r = stage.getBoundingClientRect();
+        splitPct = Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100));
+        applySplit();
+      }
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (isPanning) {
+        panX = e.clientX - startX;
+        panY = e.clientY - startY;
+        renderTransform();
+      } else if (isSwiping) {
+        const r = stage.getBoundingClientRect();
+        splitPct = Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100));
+        applySplit();
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      isPanning = false;
+      isSwiping = false;
+      stage.style.cursor = 'ew-resize';
+    });
+
+    stage.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        const r = stage.getBoundingClientRect();
+        splitPct = Math.max(0, Math.min(100, ((e.touches[0].clientX - r.left) / r.width) * 100));
+        applySplit();
+      }
+    }, { passive: true });
+
+    stage.addEventListener('touchmove', e => {
+      if (e.touches.length === 1) {
+        const r = stage.getBoundingClientRect();
+        splitPct = Math.max(0, Math.min(100, ((e.touches[0].clientX - r.left) / r.width) * 100));
+        applySplit();
+      }
+    }, { passive: true });
+
+    stage.addEventListener('wheel', e => {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.25 : 0.8;
+      setZoom(zoom * factor);
+    }, { passive: false });
+
+    window.addEventListener('resize', applySplit);
+  </script>
+</body>
+</html>
