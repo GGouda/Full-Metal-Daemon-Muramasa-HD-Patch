@@ -157681,5 +157681,154 @@
     "updated_at": "2026-11-06T22:10:39.074022+02:00",
     "output_bytes": 7366437874,
     "free_bytes": 869027479552
+  },
+  "denoise": {
+    "items": {
+      "backgrounds/bg001_空a_01.png": {
+        "category": "backgrounds",
+        "original_path": "media/cg/bg/bg001_空a_01.png",
+        "new_path": "backgrounds/bg001_空a_01.png",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2560,
+          1440
+        ],
+        "elapsed_s": 123.25,
+        "status": "PASS",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 47.78,
+          "ssim": 0.9994,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2560,
+            1440
+          ]
+        },
+        "thumb": "bg001_空a_01.png"
+      }
+    },
+    "summary": {
+      "model": "4x FDAT XL (32k bf16)",
+      "total": 5464,
+      "finished": 1,
+      "percent": 0.0,
+      "categories": {
+        "effects/anime": {
+          "total": 176,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "backgrounds": {
+          "total": 398,
+          "finished": 1,
+          "passed": 1,
+          "warned": 0,
+          "failed": 0
+        },
+        "backgrounds_hi": {
+          "total": 81,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "sprites/mecha_hud": {
+          "total": 286,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "effects/transitions": {
+          "total": 131,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "effects/cg": {
+          "total": 103,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "effects/cg_hi": {
+          "total": 22,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "event_cg": {
+          "total": 600,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "event_cg_hi": {
+          "total": 311,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "sprites/faces": {
+          "total": 872,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "effects/masks": {
+          "total": 17,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "ui/records": {
+          "total": 68,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "sprites/characters": {
+          "total": 384,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "sprites/characters_hi": {
+          "total": 139,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        },
+        "ui": {
+          "total": 1876,
+          "finished": 0,
+          "passed": 0,
+          "warned": 0,
+          "failed": 0
+        }
+      },
+      "updated_at": "2026-11-15T21:23:56.324383+02:00",
+      "output_bytes": 3347904,
+      "free_bytes": 863727616000
+    }
   }
 }
