@@ -157828,12 +157828,41 @@
           ]
         },
         "thumb": "bg001_空c_03.png"
+      },
+      "backgrounds/bg001_空d_03.png": {
+        "category": "backgrounds",
+        "original_path": "media/cg/bg/bg001_空d_03.png",
+        "new_path": "backgrounds/bg001_空d_03.png",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2560,
+          1440
+        ],
+        "elapsed_s": 124.49,
+        "status": "PASS",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 49.28,
+          "ssim": 0.9997,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2560,
+            1440
+          ]
+        },
+        "thumb": "bg001_空d_03.png"
       }
     },
     "summary": {
       "model": "4x FDAT XL (32k bf16)",
       "total": 5464,
-      "finished": 5,
+      "finished": 6,
       "percent": 0.1,
       "categories": {
         "effects/anime": {
@@ -157845,8 +157874,8 @@
         },
         "backgrounds": {
           "total": 398,
-          "finished": 5,
-          "passed": 5,
+          "finished": 6,
+          "passed": 6,
           "warned": 0,
           "failed": 0
         },
@@ -157942,9 +157971,9 @@
           "failed": 0
         }
       },
-      "updated_at": "2026-11-15T21:32:22.850964+02:00",
-      "output_bytes": 15499922,
-      "free_bytes": 863713996800
+      "updated_at": "2026-11-15T21:34:32.199491+02:00",
+      "output_bytes": 17962288,
+      "free_bytes": 863711223808
     }
   }
 }
