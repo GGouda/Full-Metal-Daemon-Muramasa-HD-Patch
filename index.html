@@ -1364,9 +1364,13 @@
           MURAMASA 2K
         </div>
         <div class="system-chips">
-          <span class="sys-chip">Model: <strong>4x DAT2 (28k bf16)</strong></span>
+          <span class="sys-chip">Model: <strong id="sys-model-chip">4x FDAT XL (32k bf16)</strong></span>
           <span class="sys-chip">Target: <strong>patch005.npk</strong></span>
           <span class="sys-chip">GPU: <strong>RTX 4060</strong></span>
+          <div class="category-tabs-group" role="tablist" style="margin-left: 4px; padding: 2px;">
+            <button class="cat-tab-btn active" id="phase-btn-denoise" onclick="setPipelinePhase('denoise')" style="padding: 3px 10px; font-size: 11px;">Denoise (FDAT XL)</button>
+            <button class="cat-tab-btn" id="phase-btn-upscale" onclick="setPipelinePhase('upscale')" style="padding: 3px 10px; font-size: 11px;">Upscale (DAT2)</button>
+          </div>
         </div>
       </div>
 
@@ -1702,10 +1706,34 @@
     let visibleCount = CHUNK_SIZE;
 
     let dataCache = null;
+    let currentPhase = 'denoise';
     let pollInterval = null;
     let isDrawerOpen = false;
     let hideFilenames = false;
     let activeTimeCat = 'all';
+
+    function getPhaseData(src = dataCache) {
+      if (!src) return { summary: {}, items: {} };
+      if (currentPhase === 'denoise' && src.denoise) {
+        return src.denoise;
+      }
+      return { summary: src.summary || {}, items: src.items || {} };
+    }
+
+    function setPipelinePhase(phase) {
+      currentPhase = phase;
+      const bDen = document.getElementById('phase-btn-denoise');
+      const bUp = document.getElementById('phase-btn-upscale');
+      const mChip = document.getElementById('sys-model-chip');
+      if (bDen) bDen.classList.toggle('active', phase === 'denoise');
+      if (bUp) bUp.classList.toggle('active', phase === 'upscale');
+      if (mChip) mChip.textContent = phase === 'denoise' ? '4x FDAT XL (32k bf16)' : '4x DAT2 (28k bf16)';
+      if (dataCache) {
+        const logEl = document.getElementById('activity-log-stream');
+        if (logEl) logEl.innerHTML = '';
+        updateDashboard(dataCache, 0);
+      }
+    }
 
     // LocalStorage persistence
     const KEY_SPOILERS = 'muramasa_revealed_keys';
@@ -1766,10 +1794,22 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        const prevFinished = dataCache?.summary?.finished || 0;
-        const newFinished = data.summary?.finished || 0;
+        if (!data.denoise && currentPhase === 'denoise') {
+          currentPhase = 'upscale';
+        }
+        const prevPhase = getPhaseData(dataCache);
+        const nextPhase = getPhaseData(data);
+        const prevFinished = prevPhase?.summary?.finished || 0;
+        const newFinished = nextPhase?.summary?.finished || 0;
         const arrivals = (prevFinished > 0 && newFinished > prevFinished) ? (newFinished - prevFinished) : 0;
         dataCache = data;
+
+        const bDen = document.getElementById('phase-btn-denoise');
+        const bUp = document.getElementById('phase-btn-upscale');
+        const mChip = document.getElementById('sys-model-chip');
+        if (bDen) bDen.classList.toggle('active', currentPhase === 'denoise');
+        if (bUp) bUp.classList.toggle('active', currentPhase === 'upscale');
+        if (mChip) mChip.textContent = currentPhase === 'denoise' ? '4x FDAT XL (32k bf16)' : '4x DAT2 (28k bf16)';
 
         updateDashboard(data, arrivals);
       } catch (err) {
@@ -1781,13 +1821,15 @@
     }
 
     function updateDashboard(data, arrivalsCount = 0) {
-      const s = data.summary || {};
+      const phaseData = getPhaseData(data);
+      const s = phaseData.summary || {};
       const total = s.total || 0;
       const finished = s.finished || 0;
       const percent = total > 0 ? (finished / total * 100).toFixed(1) : '0.0';
+      const phaseLabel = currentPhase === 'denoise' ? 'Denoise' : 'Upscale';
 
       // 1. Overall progress in Page Title
-      document.title = `(${percent}%) Muramasa HD 2K Remaster Dashboard`;
+      document.title = `(${percent}% ${phaseLabel}) Muramasa HD 2K Remaster Dashboard`;
 
       // 2. Hero progress count up
       document.getElementById('hero-percent-val').textContent = percent;
@@ -1795,7 +1837,7 @@
       document.getElementById('hero-total-cnt').textContent = total.toLocaleString();
 
       // 3. Tiers & Metrics
-      const itemsList = data.items ? Object.values(data.items) : [];
+      const itemsList = phaseData.items ? Object.values(phaseData.items) : [];
       let passCount = 0, marginalCount = 0, reviewCount = 0, failCount = 0;
       let psnrList = [], ssimList = [];
 
@@ -1914,9 +1956,10 @@
       const currentTs = parseTimestamp(s.updated_at) || Date.now();
       const currentFinished = s.finished || 0;
 
+      const snapKey = SNAPSHOTS_KEY + '_' + currentPhase;
       let snapshots = [];
       try {
-        const raw = sessionStorage.getItem(SNAPSHOTS_KEY);
+        const raw = sessionStorage.getItem(snapKey);
         if (raw) snapshots = JSON.parse(raw);
       } catch (e) {}
 
@@ -1925,7 +1968,7 @@
       if (!lastSnap || lastSnap.finished !== currentFinished) {
         snapshots.push({ finished: currentFinished, timeMs: currentTs });
         if (snapshots.length > 24) snapshots.shift();
-        try { sessionStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots)); } catch (e) {}
+        try { sessionStorage.setItem(snapKey, JSON.stringify(snapshots)); } catch (e) {}
       }
 
       if (snapshots.length < 2) {
@@ -2069,7 +2112,8 @@
       activeTimeCat = cat;
       document.querySelectorAll('.time-pill-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      if (dataCache?.items) renderTimeHistogramData(Object.values(dataCache.items));
+      const pItems = getPhaseData()?.items;
+      if (pItems) renderTimeHistogramData(Object.values(pItems));
     }
 
     function renderTimeHistogramData(itemsList) {
@@ -2209,11 +2253,12 @@
     const renderedCardNodes = new Map(); // path -> DOM Node
 
     function renderItemsKeyed(arrivalsCount = 0) {
-      if (!dataCache || !dataCache.items) return;
+      const phaseItems = getPhaseData()?.items;
+      if (!phaseItems) return;
       const container = document.getElementById('cards-grid');
       const sentinel = document.getElementById('scroll-sentinel');
 
-      let items = Object.values(dataCache.items);
+      let items = Object.values(phaseItems);
 
       // 1. Category Filter
       if (currentCategory !== 'all') {
@@ -2393,8 +2438,9 @@
     }
 
     function revealAll() {
-      if (dataCache?.items) {
-        Object.keys(dataCache.items).forEach(k => revealedSet.add(k));
+      const pItems = getPhaseData()?.items;
+      if (pItems) {
+        Object.keys(pItems).forEach(k => revealedSet.add(k));
         persistState();
       }
       renderItemsKeyed();
@@ -2426,10 +2472,11 @@
     }
 
     function copyRerunList() {
-      if (!flaggedSet.size || !dataCache?.items) return;
+      const pItems = getPhaseData()?.items;
+      if (!flaggedSet.size || !pItems) return;
       const paths = [];
       flaggedSet.forEach(k => {
-        const item = dataCache.items[k];
+        const item = pItems[k];
         if (item?.original_path) paths.push(item.original_path);
         else paths.push(k);
       });
@@ -2442,10 +2489,11 @@
     }
 
     function downloadRerunJson() {
-      if (!flaggedSet.size || !dataCache?.items) return;
+      const pItems = getPhaseData()?.items;
+      if (!flaggedSet.size || !pItems) return;
       const list = [];
       flaggedSet.forEach(k => {
-        const it = dataCache.items[k];
+        const it = pItems[k];
         if (it) list.push(it);
       });
       const blob = new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' });
@@ -2534,7 +2582,7 @@
     // --- INFINITE SCROLL OBSERVER ---
     const scrollObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        if (dataCache?.items && visibleCount < currentRenderList.length) {
+        if (getPhaseData()?.items && visibleCount < currentRenderList.length) {
           visibleCount += CHUNK_SIZE;
           renderItemsKeyed();
         }
