@@ -158004,5 +158004,81 @@
       "output_bytes": 20781311,
       "free_bytes": 863708127232
     }
+  },
+  "videos": {
+    "items": {
+      "videos/dx/mvop.wmv": {
+        "type": "video",
+        "category": "videos/16x9_anime",
+        "video_class": "16x9_anime",
+        "original_path": "media/dx/mvop.wmv",
+        "new_path": "videos/dx/mvop.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/mvop.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2560,
+          1440
+        ],
+        "frames_src": 2376,
+        "frames_out": 2376,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 85.461,
+        "out_duration_s": 85.461,
+        "has_audio": true,
+        "audio_kbps": 255,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 303036188,
+        "elapsed_s": 197.29,
+        "audit_elapsed_s": 78.6,
+        "status": "PASS",
+        "reasons": [],
+        "preview_clip": "videos/v001_mvop_cmp.mp4",
+        "preview_bytes": 2062069,
+        "thumb": "video_thumbs/v001_mvop.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.46,
+          "min_psnr": 34.72,
+          "ssim": 0.9987,
+          "scene_samples": 11,
+          "temporal_ratio": 0.988,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2560,
+            1440
+          ]
+        }
+      }
+    },
+    "summary": {
+      "total": 78,
+      "finished": 1,
+      "passed": 1,
+      "warned": 0,
+      "failed": 0,
+      "percent": 1.3,
+      "updated_at": "2026-11-16T21:12:39.580876+02:00",
+      "output_bytes": 303036188,
+      "free_bytes": 861965918208,
+      "model": "2x AnimeJaNai SD V1b34 Strong (FP16)"
+    }
   }
 }

@@ -1,7 +1,12 @@
 *.bak
+*.pre_video.bak
 cache/
 orig/
 upscaled/
+videos/
+video_thumbs/
+*.mp4
+*.webm
 test_2k.webp
 test_orig.webp
 __pycache__/

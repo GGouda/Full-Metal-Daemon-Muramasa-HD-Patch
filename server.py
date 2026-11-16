@@ -1,4 +1,5 @@
 import http.server
+import socket
 import socketserver
 import os
 import sys
@@ -21,7 +22,7 @@ class CompressedHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
-        
+
         # Endpoint: compressed image comparison
         if parsed.path in ("/api/img/orig", "/api/img/2k"):
             params = urllib.parse.parse_qs(parsed.query)
@@ -34,7 +35,78 @@ class CompressedHandler(http.server.SimpleHTTPRequestHandler):
             self.serve_compressed(kind, rel_path)
             return
 
+        # Prevent stale polling of progress.json
+        if parsed.path == "/progress.json":
+            fpath = os.path.join(DASHBOARD_DIR, "progress.json")
+            if not os.path.isfile(fpath):
+                self.send_error(404, "progress.json not found")
+                return
+            with open(fpath, "rb") as f:
+                data = f.read()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(data)
+            return
+
+        # HTTP Range support for MP4 / WebM video scrubbing
+        if parsed.path.lower().endswith((".mp4", ".webm")):
+            local_path = self.translate_path(self.path)
+            if os.path.isfile(local_path):
+                self.serve_video_range(local_path)
+                return
+
         super().do_GET()
+
+    def serve_video_range(self, file_path):
+        file_size = os.path.getsize(file_path)
+        ctype = "video/webm" if file_path.lower().endswith(".webm") else "video/mp4"
+        range_hdr = self.headers.get("Range")
+        start, end = 0, file_size - 1
+        status = 200
+
+        if range_hdr and range_hdr.startswith("bytes="):
+            spec = range_hdr[6:].split(",")[0].strip()
+            parts = spec.split("-")
+            if parts[0]:
+                start = int(parts[0])
+                end = int(parts[1]) if (len(parts) > 1 and parts[1]) else (file_size - 1)
+            elif len(parts) > 1 and parts[1]:
+                suffix = int(parts[1])
+                start = max(0, file_size - suffix)
+                end = file_size - 1
+            if start >= file_size or start > end:
+                self.send_response(416)
+                self.send_header("Content-Range", f"bytes */{file_size}")
+                self.end_headers()
+                return
+            end = min(end, file_size - 1)
+            status = 206
+
+        length = (end - start) + 1
+        self.send_response(status)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Content-Length", str(length))
+        if status == 206:
+            self.send_header("Content-Range", f"bytes {start}-{end}/{file_size}")
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+
+        try:
+            with open(file_path, "rb") as f:
+                f.seek(start)
+                rem = length
+                while rem > 0:
+                    chunk = f.read(min(65536, rem))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    rem -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            pass
 
     def serve_compressed(self, kind, rel_path):
         # Flatten path for cache filename
@@ -101,11 +173,17 @@ class CompressedHandler(http.server.SimpleHTTPRequestHandler):
 
 class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     daemon_threads = True
+    address_family = socket.AF_INET6
+
+    def server_bind(self):
+        self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+        super().server_bind()
+
 
 if __name__ == "__main__":
     os.chdir(DASHBOARD_DIR)
     socketserver.TCPServer.allow_reuse_address = True
-    server = ThreadedHTTPServer(("", PORT), CompressedHandler)
+    server = ThreadedHTTPServer(("::", PORT), CompressedHandler)
     print(f"[Dashboard Server] Serving compressed WebP stream on http://localhost:{PORT}")
     sys.stdout.flush()
     try:

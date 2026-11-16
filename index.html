@@ -869,6 +869,11 @@
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
+    .badge-tier.pass {
+      background: var(--status-pass-bg);
+      border: 1px solid var(--status-pass-border);
+      color: var(--status-pass);
+    }
     .badge-tier.review {
       background: var(--status-review-bg);
       border: 1px solid var(--status-review-border);
@@ -888,6 +893,32 @@
       background: var(--status-fail-bg);
       border: 1px solid var(--status-fail-border);
       color: #fca5a5;
+    }
+
+    .lb-video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000000;
+      display: none;
+    }
+    .card-thumb-wrap video.card-thumb-img {
+      object-fit: contain;
+      background: #000000;
+    }
+    .card-video-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(94, 200, 255, 0.35);
+      color: var(--cyan);
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      pointer-events: none;
+      z-index: 5;
     }
 
     .card-overlay-actions {
@@ -1364,13 +1395,9 @@
           MURAMASA 2K
         </div>
         <div class="system-chips">
-          <span class="sys-chip">Model: <strong id="sys-model-chip">4x FDAT XL (32k bf16)</strong></span>
-          <span class="sys-chip">Target: <strong>patch005.npk</strong></span>
+          <span class="sys-chip">Model: <strong id="sys-model-chip">4x DAT2 + SD V1b34 Strong</strong></span>
+          <span class="sys-chip">Target: <strong>patch005.npk + MP4</strong></span>
           <span class="sys-chip">GPU: <strong>RTX 4060</strong></span>
-          <div class="category-tabs-group" role="tablist" style="margin-left: 4px; padding: 2px;">
-            <button class="cat-tab-btn active" id="phase-btn-denoise" onclick="setPipelinePhase('denoise')" style="padding: 3px 10px; font-size: 11px;">Denoise (FDAT XL)</button>
-            <button class="cat-tab-btn" id="phase-btn-upscale" onclick="setPipelinePhase('upscale')" style="padding: 3px 10px; font-size: 11px;">Upscale (DAT2)</button>
-          </div>
         </div>
       </div>
 
@@ -1392,11 +1419,6 @@
         <div class="panic-hint" title="Press P or double-tap Esc to blur all images immediately">
           Panic: <kbd>P</kbd> or <kbd>Esc</kbd>
         </div>
-
-        <!-- Swipe Compare Link -->
-        <a class="drawer-toggle-btn" href="compare.html" style="text-decoration: none; border-color: rgba(0, 210, 255, 0.4); color: var(--cyan);">
-          Swipe Compare
-        </a>
 
         <!-- Telemetry Drawer Toggle -->
         <button class="drawer-toggle-btn" id="toggle-telemetry-btn" onclick="toggleTelemetryDrawer()" aria-expanded="false" aria-controls="telemetry-drawer">
@@ -1530,6 +1552,9 @@
         <button class="cat-tab-btn" role="tab" aria-selected="false" onclick="setCategoryTab('effects', this)">
           Effects <span class="tab-count" id="tab-cnt-effects">0 / 0</span>
         </button>
+        <button class="cat-tab-btn" role="tab" aria-selected="false" onclick="setCategoryTab('videos', this)">
+          Videos <span class="tab-count" id="tab-cnt-videos">0 / 78</span>
+        </button>
       </div>
 
       <!-- Search Input -->
@@ -1604,7 +1629,7 @@
       </div>
 
       <!-- Mode switches -->
-      <div class="lightbox-mode-switches">
+      <div class="lightbox-mode-switches" id="lb-mode-switches">
         <button class="lb-mode-btn active" id="btn-mode-slider" onclick="setLightboxMode('slider')">Split Slider</button>
         <button class="lb-mode-btn" id="btn-mode-side" onclick="setLightboxMode('side')">Side-by-Side</button>
         <button class="lb-mode-btn" id="btn-mode-flicker" onclick="setLightboxMode('flicker')">Flicker Peek</button>
@@ -1630,6 +1655,8 @@
       </button>
 
       <div class="lightbox-canvas-holder" id="lb-canvas-holder">
+        <video class="lb-video-player" id="lb-video-player" controls loop playsinline></video>
+
         <!-- AFTER (Upscaled 2K) -->
         <img class="lb-img-after" id="lb-img-after" src="" alt="Upscaled 2K Asset">
 
@@ -1685,7 +1712,12 @@
       'effects/masks': 'Masks',
       'effects/transitions': 'Transitions',
       'ui': 'UI',
-      'ui/records': 'Records UI'
+      'ui/records': 'Records UI',
+      'videos': 'Videos',
+      'videos/16x9_anime': 'Anime Video',
+      'videos/16x9_cg': 'CG Video',
+      'videos/1x1_3d': '3D Clip',
+      'videos/split_alpha': 'Split Alpha'
     };
 
     const CATEGORY_COLORS = {
@@ -1693,7 +1725,8 @@
       'event_cg': '#f472b6',
       'sprites': '#a78bfa',
       'ui': '#fbbf24',
-      'effects': '#34d399'
+      'effects': '#34d399',
+      'videos': '#5ec8ff'
     };
 
     const GRID_LEVELS = {
@@ -1711,7 +1744,7 @@
     let visibleCount = CHUNK_SIZE;
 
     let dataCache = null;
-    let currentPhase = 'denoise';
+    let currentPhase = 'upscale';
     let pollInterval = null;
     let isDrawerOpen = false;
     let hideFilenames = false;
@@ -1719,25 +1752,20 @@
 
     function getPhaseData(src = dataCache) {
       if (!src) return { summary: {}, items: {} };
-      if (currentPhase === 'denoise' && src.denoise) {
-        return src.denoise;
+      if (currentCategory === 'videos' && src.videos) {
+        return { summary: src.videos.summary || {}, items: src.videos.items || {} };
       }
-      return { summary: src.summary || {}, items: src.items || {} };
+      const imgSummary = src.summary || {};
+      const imgItems = src.items || {};
+      if (currentCategory === 'all' && src.videos && src.videos.items) {
+        return { summary: imgSummary, items: { ...imgItems, ...src.videos.items } };
+      }
+      return { summary: imgSummary, items: imgItems };
     }
 
-    function setPipelinePhase(phase) {
-      currentPhase = phase;
-      const bDen = document.getElementById('phase-btn-denoise');
-      const bUp = document.getElementById('phase-btn-upscale');
-      const mChip = document.getElementById('sys-model-chip');
-      if (bDen) bDen.classList.toggle('active', phase === 'denoise');
-      if (bUp) bUp.classList.toggle('active', phase === 'upscale');
-      if (mChip) mChip.textContent = phase === 'denoise' ? '4x FDAT XL (32k bf16)' : '4x DAT2 (28k bf16)';
-      if (dataCache) {
-        const logEl = document.getElementById('activity-log-stream');
-        if (logEl) logEl.innerHTML = '';
-        updateDashboard(dataCache, 0);
-      }
+    function getImageData(src = dataCache) {
+      if (!src) return { summary: {}, items: {} };
+      return { summary: src.summary || {}, items: src.items || {} };
     }
 
     // LocalStorage persistence
@@ -1768,6 +1796,7 @@
     function tier(item) {
       if (!item) return 'PASS';
       const st = (item.status || '').toUpperCase();
+      if (item.type === 'video') return st || 'PASS';
       if (st === 'FAIL') return 'FAIL';
       if (st === 'WARN' || (item.metrics && (item.metrics.psnr < 24.0 || item.metrics.ssim < 0.80))) return 'WARN';
       const psnr = item.metrics?.psnr;
@@ -1799,9 +1828,6 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        if (!data.denoise && currentPhase === 'denoise') {
-          currentPhase = 'upscale';
-        }
         const prevPhase = getPhaseData(dataCache);
         const nextPhase = getPhaseData(data);
         const prevFinished = prevPhase?.summary?.finished || 0;
@@ -1809,12 +1835,12 @@
         const arrivals = (prevFinished > 0 && newFinished > prevFinished) ? (newFinished - prevFinished) : 0;
         dataCache = data;
 
-        const bDen = document.getElementById('phase-btn-denoise');
-        const bUp = document.getElementById('phase-btn-upscale');
         const mChip = document.getElementById('sys-model-chip');
-        if (bDen) bDen.classList.toggle('active', currentPhase === 'denoise');
-        if (bUp) bUp.classList.toggle('active', currentPhase === 'upscale');
-        if (mChip) mChip.textContent = currentPhase === 'denoise' ? '4x FDAT XL (32k bf16)' : '4x DAT2 (28k bf16)';
+        if (mChip) {
+          mChip.textContent = currentCategory === 'videos'
+            ? (data.videos?.summary?.model || '2x AnimeJaNai SD V1b34 Strong (FP16)')
+            : '4x DAT2 + SD V1b34 Strong';
+        }
 
         updateDashboard(data, arrivals);
       } catch (err) {
@@ -1828,10 +1854,12 @@
     function updateDashboard(data, arrivalsCount = 0) {
       const phaseData = getPhaseData(data);
       const s = phaseData.summary || {};
-      const total = s.total || 0;
-      const finished = s.finished || 0;
+      const imgSummary = data?.summary || {};
+      const vidSummary = data?.videos?.summary || {};
+      const total = currentCategory === 'videos' ? (vidSummary.total || 78) : (s.total || 0);
+      const finished = currentCategory === 'videos' ? (vidSummary.finished || 0) : (s.finished || 0);
       const percent = total > 0 ? (finished / total * 100).toFixed(1) : '0.0';
-      const phaseLabel = currentPhase === 'denoise' ? 'Denoise' : 'Upscale';
+      const phaseLabel = currentCategory === 'videos' ? 'Videos' : 'Upscale';
 
       // 1. Overall progress in Page Title
       document.title = `(${percent}% ${phaseLabel}) Muramasa HD 2K Remaster Dashboard`;
@@ -1877,8 +1905,8 @@
       renderQualityMetrics(psnrList, ssimList, passCount, marginalCount, reviewCount);
       renderTimeHistogramData(itemsList);
 
-      // 9. Tab Counts
-      updateTabCounts(s);
+      // 9. Tab Counts (always derived from image summary + video summary)
+      updateTabCounts(imgSummary, vidSummary);
       updateFlagCount();
 
       // 10. Keyed Grid Render
@@ -2193,15 +2221,18 @@
     }
 
     // --- TAB COUNTS ---
-    function updateTabCounts(s) {
-      if (!s.categories) return;
+    function updateTabCounts(s, vidSummary = {}) {
+      if (!s || !s.categories) return;
+      const vidFin = vidSummary.finished || 0;
+      const vidTot = vidSummary.total || 78;
       const counts = {
-        all: { fin: s.finished || 0, tot: s.total || 0 },
+        all: { fin: (s.finished || 0) + vidFin, tot: (s.total || 0) + vidTot },
         backgrounds: { fin: 0, tot: 0 },
         event_cg: { fin: 0, tot: 0 },
         sprites: { fin: 0, tot: 0 },
         ui: { fin: 0, tot: 0 },
-        effects: { fin: 0, tot: 0 }
+        effects: { fin: 0, tot: 0 },
+        videos: { fin: vidFin, tot: vidTot }
       };
 
       for (const k in s.categories) {
@@ -2338,7 +2369,8 @@
 
     function updateCardNode(card, item) {
       const itemTier = tier(item);
-      const isRevealed = revealedSet.has(item.new_path);
+      const isVideo = item.type === 'video' || (item.category || '').startsWith('videos');
+      const isRevealed = isVideo ? !videoBlurredSet.has(item.new_path) : revealedSet.has(item.new_path);
       const isFlagged = flaggedSet.has(item.new_path);
       const filename = (item.new_path || '').split('/').pop();
       const encodedKey = encodeURIComponent(item.new_path);
@@ -2354,7 +2386,6 @@
       const psnrVal = item.metrics?.psnr || 0;
       const ssimVal = item.metrics?.ssim !== undefined ? Number(item.metrics.ssim).toFixed(4) : '--';
       const timeVal = item.elapsed_s ? `${Number(item.elapsed_s).toFixed(1)}s` : '--';
-      const psnrPct = Math.max(10, Math.min(100, ((psnrVal - 30) / 30) * 100));
 
       const origDims = item.orig_dims ? `${item.orig_dims[0]}×${item.orig_dims[1]}` : '--';
       const upDims = item.upscaled_dims ? `${item.upscaled_dims[0]}×${item.upscaled_dims[1]}` : '--';
@@ -2363,15 +2394,43 @@
         ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>`
         : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
 
+      const mediaHtml = isVideo
+        ? `<video class="card-thumb-img ${isRevealed ? '' : 'blurred'}"
+                  src="${item.preview_clip || ''}"
+                  poster="${item.thumb || ''}"
+                  muted loop playsinline preload="metadata"
+                  onmouseenter="if(!this.classList.contains('blurred')) this.play().catch(()=>{})"
+                  onmouseleave="this.pause();"></video>
+           <span class="card-video-badge">7s CMP &middot; &Delta;${Number(item.pts_max_diff_ms || 0).toFixed(1)}ms</span>`
+        : `<img class="card-thumb-img ${isRevealed ? '' : 'blurred'}"
+                loading="lazy"
+                src="thumbs/${encodeURIComponent(item.thumb || '')}"
+                alt="${filename}"
+                onerror="this.src='fallback.png'">`;
+
+      const statusBadgeHtml = isVideo
+        ? `<span class="badge-tier ${itemTier.toLowerCase()}">${itemTier}</span>`
+        : '';
+
+      const metaLineHtml = isVideo
+        ? `<span>${origDims} &rarr; <strong>${upDims}</strong> &middot; ${item.frames_out || 0}/${item.frames_src || 0}f</span>`
+        : `<span>${origDims} &rarr; <strong>${upDims}</strong></span>`;
+
+      const metricsLineHtml = isVideo
+        ? `<span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
+           <span class="metrics-dot">&bull;</span>
+           <span>SSIM: ${ssimVal}</span>
+           <span class="metrics-dot">&bull;</span>
+           <span>Flic: ${item.metrics?.temporal_ratio ?? '--'}x</span>`
+        : `<span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
+           <span class="metrics-dot">&bull;</span>
+           <span>SSIM: ${ssimVal}</span>`;
+
       card.innerHTML = `
         <div class="card-glare"></div>
-        <div class="card-thumb-wrap" 
+        <div class="card-thumb-wrap"
              onclick="openLightbox('${encodedKey}')">
-          <img class="card-thumb-img ${isRevealed ? '' : 'blurred'}" 
-               loading="lazy" 
-               src="thumbs/${encodeURIComponent(item.thumb || '')}" 
-               alt="${filename}" 
-               onerror="this.src='fallback.png'">
+          ${mediaHtml}
 
           <div class="card-top-overlay">
             <div class="card-top-left">
@@ -2379,11 +2438,12 @@
                 <span class="cat-dot" style="background: ${catColor};"></span>
                 ${catLabel}
               </span>
+              ${statusBadgeHtml}
             </div>
 
             <div class="card-overlay-actions">
-              <button class="card-icon-btn" 
-                      title="Toggle Spoiler Blur" 
+              <button class="card-icon-btn"
+                      title="Toggle Spoiler Blur"
                       onclick="toggleSpoiler('${encodedKey}', event)"
                       aria-label="Toggle blur spoiler">
                 ${eyeSvg}
@@ -2399,13 +2459,11 @@
           </div>
 
           <div class="card-meta-line">
-            <span>${origDims} &rarr; <strong>${upDims}</strong></span>
+            ${metaLineHtml}
           </div>
 
           <div class="card-metrics-line">
-            <span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
-            <span class="metrics-dot">&bull;</span>
-            <span>SSIM: ${ssimVal}</span>
+            ${metricsLineHtml}
           </div>
         </div>
       `;
@@ -2427,27 +2485,35 @@
       if (img) img.classList.remove('peeking');
     }
 
+    let videoBlurredSet = new Set();
+
     function toggleSpoiler(encodedKey, e) {
       if (e) e.stopPropagation();
       const key = decodeURIComponent(encodedKey);
-      if (revealedSet.has(key)) revealedSet.delete(key);
-      else revealedSet.add(key);
-      persistState();
+      if (key.startsWith('videos/')) {
+        if (videoBlurredSet.has(key)) videoBlurredSet.delete(key);
+        else videoBlurredSet.add(key);
+      } else {
+        if (revealedSet.has(key)) revealedSet.delete(key);
+        else revealedSet.add(key);
+        persistState();
+      }
       renderItemsKeyed();
     }
 
     function blurAll() {
       revealedSet.clear();
+      const vItems = dataCache?.videos?.items || {};
+      Object.keys(vItems).forEach(k => videoBlurredSet.add(k));
       persistState();
       renderItemsKeyed();
     }
 
     function revealAll() {
-      const pItems = getPhaseData()?.items;
-      if (pItems) {
-        Object.keys(pItems).forEach(k => revealedSet.add(k));
-        persistState();
-      }
+      videoBlurredSet.clear();
+      const imgItems = dataCache?.items || {};
+      Object.keys(imgItems).forEach(k => revealedSet.add(k));
+      persistState();
       renderItemsKeyed();
     }
 
@@ -2476,9 +2542,13 @@
       renderItemsKeyed();
     }
 
+    function getAllLookupItems() {
+      return { ...(dataCache?.items || {}), ...(dataCache?.videos?.items || {}) };
+    }
+
     function copyRerunList() {
-      const pItems = getPhaseData()?.items;
-      if (!flaggedSet.size || !pItems) return;
+      const pItems = getAllLookupItems();
+      if (!flaggedSet.size) return;
       const paths = [];
       flaggedSet.forEach(k => {
         const item = pItems[k];
@@ -2494,8 +2564,8 @@
     }
 
     function downloadRerunJson() {
-      const pItems = getPhaseData()?.items;
-      if (!flaggedSet.size || !pItems) return;
+      const pItems = getAllLookupItems();
+      if (!flaggedSet.size) return;
       const list = [];
       flaggedSet.forEach(k => {
         const it = pItems[k];
@@ -2524,7 +2594,17 @@
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
       }
-      renderItemsKeyed();
+      if (dataCache) {
+        const mChip = document.getElementById('sys-model-chip');
+        if (mChip) {
+          mChip.textContent = currentCategory === 'videos'
+            ? (dataCache.videos?.summary?.model || '2x AnimeJaNai SD V1b34 Strong (FP16)')
+            : '4x DAT2 + SD V1b34 Strong';
+        }
+        updateDashboard(dataCache, 0);
+      } else {
+        renderItemsKeyed();
+      }
     }
 
     function onSearchChange(val) {
@@ -2699,37 +2779,78 @@
         document.getElementById('lb-filename').childNodes[0].nodeValue = fn + ' ';
       }
       
+      const isVideo = item.type === 'video' || (item.category || '').startsWith('videos');
       const orig = item.orig_dims ? `${item.orig_dims[0]}×${item.orig_dims[1]}` : '--';
       const up = item.upscaled_dims ? `${item.upscaled_dims[0]}×${item.upscaled_dims[1]}` : '--';
       const catLabel = CATEGORY_LABELS[item.category] || item.category || '';
-      document.getElementById('lb-meta').textContent = `${catLabel} · ${orig} → ${up}`;
+      if (isVideo) {
+        const c = item.color_tags || {};
+        const reasonsStr = (item.reasons && item.reasons.length) ? ` (${item.reasons.join(', ')})` : '';
+        document.getElementById('lb-meta').textContent =
+          `${catLabel} · ${item.status || 'PASS'}${reasonsStr} · ${orig} → ${up} · ${item.frames_out}/${item.frames_src}f · PTS Δ${item.pts_max_diff_ms}ms · ${c.space || ''}/${c.primaries || ''}/${c.range || ''} · AAC ${item.audio_kbps || 0}k`;
+      } else {
+        document.getElementById('lb-meta').textContent = `${catLabel} · ${orig} → ${up}`;
+      }
 
       const dims = item.upscaled_dims || item.orig_dims || [16, 9];
-      const aspect = (dims[0] && dims[1]) ? (dims[0] / dims[1]) : (16 / 9);
+      const aspect = isVideo ? ((dims[0] && dims[1]) ? ((dims[0] * 2) / dims[1]) : (32 / 9)) : ((dims[0] && dims[1]) ? (dims[0] / dims[1]) : (16 / 9));
       const holder = document.getElementById('lb-canvas-holder');
       if (holder) holder.style.setProperty('--canvas-aspect', aspect.toFixed(4));
 
-      const thumbUrl = `thumbs/${encodeURIComponent(item.thumb || '')}`;
-
-      const tagOrig = document.getElementById('lb-tag-orig');
-      const tagUp = document.getElementById('lb-tag-up');
-      if (tagOrig) tagOrig.textContent = `ORIGINAL (${orig}) · PIXELATED`;
-      if (tagUp) tagUp.textContent = `2K REMASTER (${up})`;
-
       const imgAfter = document.getElementById('lb-img-after');
       const imgBefore = document.getElementById('lb-img-before');
+      const vidPlayer = document.getElementById('lb-video-player');
+      const sliderLine = document.getElementById('lb-slider-line');
+      const sliderHandle = document.getElementById('lb-slider-handle');
+      const tagOrig = document.getElementById('lb-tag-orig');
+      const tagUp = document.getElementById('lb-tag-up');
+      const modeSwitches = document.getElementById('lb-mode-switches');
 
-      const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
-      if (isLocal) {
-        imgAfter.src = `/api/img/2k?path=${encodeURIComponent(item.new_path)}`;
-        imgBefore.src = `/api/img/orig?path=${encodeURIComponent(item.new_path)}`;
+      if (isVideo) {
+        imgAfter.style.display = 'none';
+        imgBefore.style.display = 'none';
+        if (sliderLine) sliderLine.style.display = 'none';
+        if (sliderHandle) sliderHandle.style.display = 'none';
+        if (tagOrig) tagOrig.style.display = 'none';
+        if (tagUp) tagUp.style.display = 'none';
+        if (modeSwitches) modeSwitches.style.display = 'none';
+        if (vidPlayer) {
+          vidPlayer.style.display = 'block';
+          vidPlayer.poster = item.thumb || '';
+          vidPlayer.src = item.preview_clip || '';
+          vidPlayer.play().catch(() => {});
+        }
       } else {
-        imgAfter.src = thumbUrl;
-        imgBefore.src = thumbUrl;
-      }
+        if (vidPlayer) {
+          vidPlayer.pause();
+          vidPlayer.removeAttribute('src');
+          vidPlayer.style.display = 'none';
+        }
+        imgAfter.style.display = 'block';
+        imgBefore.style.display = 'block';
+        if (sliderLine) sliderLine.style.display = '';
+        if (sliderHandle) sliderHandle.style.display = '';
+        if (tagOrig) tagOrig.style.display = '';
+        if (tagUp) tagUp.style.display = '';
+        if (modeSwitches) modeSwitches.style.display = '';
 
-      imgAfter.onerror = function() { this.src = thumbUrl; };
-      imgBefore.onerror = function() { this.src = thumbUrl; };
+        const thumbUrl = `thumbs/${encodeURIComponent(item.thumb || '')}`;
+
+        if (tagOrig) tagOrig.textContent = `ORIGINAL (${orig}) · PIXELATED`;
+        if (tagUp) tagUp.textContent = `2K REMASTER (${up})`;
+
+        const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+        if (isLocal) {
+          imgAfter.src = `/api/img/2k?path=${encodeURIComponent(item.new_path)}`;
+          imgBefore.src = `/api/img/orig?path=${encodeURIComponent(item.new_path)}`;
+        } else {
+          imgAfter.src = thumbUrl;
+          imgBefore.src = thumbUrl;
+        }
+
+        imgAfter.onerror = function() { this.src = thumbUrl; };
+        imgBefore.onerror = function() { this.src = thumbUrl; };
+      }
 
       const m = item.metrics || {};
       document.getElementById('lb-psnr').textContent = m.psnr !== undefined ? Number(m.psnr).toFixed(2) : '--';
@@ -2846,6 +2967,12 @@
     }
 
     function closeLightbox() {
+      const vidPlayer = document.getElementById('lb-video-player');
+      if (vidPlayer) {
+        vidPlayer.pause();
+        vidPlayer.removeAttribute('src');
+        vidPlayer.style.display = 'none';
+      }
       document.getElementById('lightbox-modal').classList.remove('active');
       activeLightboxIndex = -1;
     }
