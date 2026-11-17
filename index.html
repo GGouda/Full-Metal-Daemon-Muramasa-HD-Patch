@@ -895,32 +895,6 @@
       color: #fca5a5;
     }
 
-    .lb-video-player {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000000;
-      display: none;
-    }
-    .card-thumb-wrap video.card-thumb-img {
-      object-fit: contain;
-      background: #000000;
-    }
-    .card-video-badge {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      font-size: 10px;
-      font-family: var(--font-mono);
-      background: rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(94, 200, 255, 0.35);
-      color: var(--cyan);
-      padding: 2px 7px;
-      border-radius: var(--radius-pill);
-      pointer-events: none;
-      z-index: 5;
-    }
-
     .card-overlay-actions {
       display: flex;
       gap: 5px;
@@ -1655,8 +1629,6 @@
       </button>
 
       <div class="lightbox-canvas-holder" id="lb-canvas-holder">
-        <video class="lb-video-player" id="lb-video-player" controls loop playsinline></video>
-
         <!-- AFTER (Upscaled 2K) -->
         <img class="lb-img-after" id="lb-img-after" src="" alt="Upscaled 2K Asset">
 
@@ -2369,8 +2341,7 @@
 
     function updateCardNode(card, item) {
       const itemTier = tier(item);
-      const isVideo = item.type === 'video' || (item.category || '').startsWith('videos');
-      const isRevealed = isVideo ? !videoBlurredSet.has(item.new_path) : revealedSet.has(item.new_path);
+      const isRevealed = revealedSet.has(item.new_path);
       const isFlagged = flaggedSet.has(item.new_path);
       const filename = (item.new_path || '').split('/').pop();
       const encodedKey = encodeURIComponent(item.new_path);
@@ -2394,43 +2365,15 @@
         ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>`
         : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
 
-      const mediaHtml = isVideo
-        ? `<video class="card-thumb-img ${isRevealed ? '' : 'blurred'}"
-                  src="${item.preview_clip || ''}"
-                  poster="${item.thumb || ''}"
-                  muted loop playsinline preload="metadata"
-                  onmouseenter="if(!this.classList.contains('blurred')) this.play().catch(()=>{})"
-                  onmouseleave="this.pause();"></video>
-           <span class="card-video-badge">7s CMP &middot; &Delta;${Number(item.pts_max_diff_ms || 0).toFixed(1)}ms</span>`
-        : `<img class="card-thumb-img ${isRevealed ? '' : 'blurred'}"
-                loading="lazy"
-                src="thumbs/${encodeURIComponent(item.thumb || '')}"
-                alt="${filename}"
-                onerror="this.src='fallback.png'">`;
-
-      const statusBadgeHtml = isVideo
-        ? `<span class="badge-tier ${itemTier.toLowerCase()}">${itemTier}</span>`
-        : '';
-
-      const metaLineHtml = isVideo
-        ? `<span>${origDims} &rarr; <strong>${upDims}</strong> &middot; ${item.frames_out || 0}/${item.frames_src || 0}f</span>`
-        : `<span>${origDims} &rarr; <strong>${upDims}</strong></span>`;
-
-      const metricsLineHtml = isVideo
-        ? `<span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
-           <span class="metrics-dot">&bull;</span>
-           <span>SSIM: ${ssimVal}</span>
-           <span class="metrics-dot">&bull;</span>
-           <span>Flic: ${item.metrics?.temporal_ratio ?? '--'}x</span>`
-        : `<span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
-           <span class="metrics-dot">&bull;</span>
-           <span>SSIM: ${ssimVal}</span>`;
-
       card.innerHTML = `
         <div class="card-glare"></div>
         <div class="card-thumb-wrap"
              onclick="openLightbox('${encodedKey}')">
-          ${mediaHtml}
+          <img class="card-thumb-img ${isRevealed ? '' : 'blurred'}"
+               loading="lazy"
+               src="thumbs/${encodeURIComponent(item.thumb || '')}"
+               alt="${filename}"
+               onerror="this.src='fallback.png'">
 
           <div class="card-top-overlay">
             <div class="card-top-left">
@@ -2438,7 +2381,6 @@
                 <span class="cat-dot" style="background: ${catColor};"></span>
                 ${catLabel}
               </span>
-              ${statusBadgeHtml}
             </div>
 
             <div class="card-overlay-actions">
@@ -2459,11 +2401,13 @@
           </div>
 
           <div class="card-meta-line">
-            ${metaLineHtml}
+            <span>${origDims} &rarr; <strong>${upDims}</strong></span>
           </div>
 
           <div class="card-metrics-line">
-            ${metricsLineHtml}
+            <span>PSNR: ${psnrVal ? psnrVal.toFixed(1) + ' dB' : '--'}</span>
+            <span class="metrics-dot">&bull;</span>
+            <span>SSIM: ${ssimVal}</span>
           </div>
         </div>
       `;
@@ -2485,34 +2429,24 @@
       if (img) img.classList.remove('peeking');
     }
 
-    let videoBlurredSet = new Set();
-
     function toggleSpoiler(encodedKey, e) {
       if (e) e.stopPropagation();
       const key = decodeURIComponent(encodedKey);
-      if (key.startsWith('videos/')) {
-        if (videoBlurredSet.has(key)) videoBlurredSet.delete(key);
-        else videoBlurredSet.add(key);
-      } else {
-        if (revealedSet.has(key)) revealedSet.delete(key);
-        else revealedSet.add(key);
-        persistState();
-      }
+      if (revealedSet.has(key)) revealedSet.delete(key);
+      else revealedSet.add(key);
+      persistState();
       renderItemsKeyed();
     }
 
     function blurAll() {
       revealedSet.clear();
-      const vItems = dataCache?.videos?.items || {};
-      Object.keys(vItems).forEach(k => videoBlurredSet.add(k));
       persistState();
       renderItemsKeyed();
     }
 
     function revealAll() {
-      videoBlurredSet.clear();
-      const imgItems = dataCache?.items || {};
-      Object.keys(imgItems).forEach(k => revealedSet.add(k));
+      const allItems = getAllLookupItems();
+      Object.keys(allItems).forEach(k => revealedSet.add(k));
       persistState();
       renderItemsKeyed();
     }
@@ -2779,78 +2713,48 @@
         document.getElementById('lb-filename').childNodes[0].nodeValue = fn + ' ';
       }
       
-      const isVideo = item.type === 'video' || (item.category || '').startsWith('videos');
       const orig = item.orig_dims ? `${item.orig_dims[0]}×${item.orig_dims[1]}` : '--';
       const up = item.upscaled_dims ? `${item.upscaled_dims[0]}×${item.upscaled_dims[1]}` : '--';
       const catLabel = CATEGORY_LABELS[item.category] || item.category || '';
-      if (isVideo) {
-        const c = item.color_tags || {};
-        const reasonsStr = (item.reasons && item.reasons.length) ? ` (${item.reasons.join(', ')})` : '';
-        document.getElementById('lb-meta').textContent =
-          `${catLabel} · ${item.status || 'PASS'}${reasonsStr} · ${orig} → ${up} · ${item.frames_out}/${item.frames_src}f · PTS Δ${item.pts_max_diff_ms}ms · ${c.space || ''}/${c.primaries || ''}/${c.range || ''} · AAC ${item.audio_kbps || 0}k`;
-      } else {
-        document.getElementById('lb-meta').textContent = `${catLabel} · ${orig} → ${up}`;
-      }
+      document.getElementById('lb-meta').textContent = `${catLabel} · ${orig} → ${up}`;
 
       const dims = item.upscaled_dims || item.orig_dims || [16, 9];
-      const aspect = isVideo ? ((dims[0] && dims[1]) ? ((dims[0] * 2) / dims[1]) : (32 / 9)) : ((dims[0] && dims[1]) ? (dims[0] / dims[1]) : (16 / 9));
+      const aspect = (dims[0] && dims[1]) ? (dims[0] / dims[1]) : (16 / 9);
       const holder = document.getElementById('lb-canvas-holder');
       if (holder) holder.style.setProperty('--canvas-aspect', aspect.toFixed(4));
 
       const imgAfter = document.getElementById('lb-img-after');
       const imgBefore = document.getElementById('lb-img-before');
-      const vidPlayer = document.getElementById('lb-video-player');
       const sliderLine = document.getElementById('lb-slider-line');
       const sliderHandle = document.getElementById('lb-slider-handle');
       const tagOrig = document.getElementById('lb-tag-orig');
       const tagUp = document.getElementById('lb-tag-up');
       const modeSwitches = document.getElementById('lb-mode-switches');
 
-      if (isVideo) {
-        imgAfter.style.display = 'none';
-        imgBefore.style.display = 'none';
-        if (sliderLine) sliderLine.style.display = 'none';
-        if (sliderHandle) sliderHandle.style.display = 'none';
-        if (tagOrig) tagOrig.style.display = 'none';
-        if (tagUp) tagUp.style.display = 'none';
-        if (modeSwitches) modeSwitches.style.display = 'none';
-        if (vidPlayer) {
-          vidPlayer.style.display = 'block';
-          vidPlayer.poster = item.thumb || '';
-          vidPlayer.src = item.preview_clip || '';
-          vidPlayer.play().catch(() => {});
-        }
+      imgAfter.style.display = 'block';
+      imgBefore.style.display = 'block';
+      if (sliderLine) sliderLine.style.display = '';
+      if (sliderHandle) sliderHandle.style.display = '';
+      if (tagOrig) tagOrig.style.display = '';
+      if (tagUp) tagUp.style.display = '';
+      if (modeSwitches) modeSwitches.style.display = '';
+
+      const thumbUrl = `thumbs/${encodeURIComponent(item.thumb || '')}`;
+
+      if (tagOrig) tagOrig.textContent = `ORIGINAL (${orig}) · PIXELATED`;
+      if (tagUp) tagUp.textContent = `2K REMASTER (${up})`;
+
+      const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+      if (isLocal) {
+        imgAfter.src = `/api/img/2k?path=${encodeURIComponent(item.new_path)}`;
+        imgBefore.src = `/api/img/orig?path=${encodeURIComponent(item.new_path)}`;
       } else {
-        if (vidPlayer) {
-          vidPlayer.pause();
-          vidPlayer.removeAttribute('src');
-          vidPlayer.style.display = 'none';
-        }
-        imgAfter.style.display = 'block';
-        imgBefore.style.display = 'block';
-        if (sliderLine) sliderLine.style.display = '';
-        if (sliderHandle) sliderHandle.style.display = '';
-        if (tagOrig) tagOrig.style.display = '';
-        if (tagUp) tagUp.style.display = '';
-        if (modeSwitches) modeSwitches.style.display = '';
-
-        const thumbUrl = `thumbs/${encodeURIComponent(item.thumb || '')}`;
-
-        if (tagOrig) tagOrig.textContent = `ORIGINAL (${orig}) · PIXELATED`;
-        if (tagUp) tagUp.textContent = `2K REMASTER (${up})`;
-
-        const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
-        if (isLocal) {
-          imgAfter.src = `/api/img/2k?path=${encodeURIComponent(item.new_path)}`;
-          imgBefore.src = `/api/img/orig?path=${encodeURIComponent(item.new_path)}`;
-        } else {
-          imgAfter.src = thumbUrl;
-          imgBefore.src = thumbUrl;
-        }
-
-        imgAfter.onerror = function() { this.src = thumbUrl; };
-        imgBefore.onerror = function() { this.src = thumbUrl; };
+        imgAfter.src = thumbUrl;
+        imgBefore.src = thumbUrl;
       }
+
+      imgAfter.onerror = function() { this.src = thumbUrl; };
+      imgBefore.onerror = function() { this.src = thumbUrl; };
 
       const m = item.metrics || {};
       document.getElementById('lb-psnr').textContent = m.psnr !== undefined ? Number(m.psnr).toFixed(2) : '--';
@@ -2967,12 +2871,6 @@
     }
 
     function closeLightbox() {
-      const vidPlayer = document.getElementById('lb-video-player');
-      if (vidPlayer) {
-        vidPlayer.pause();
-        vidPlayer.removeAttribute('src');
-        vidPlayer.style.display = 'none';
-      }
       document.getElementById('lightbox-modal').classList.remove('active');
       activeLightboxIndex = -1;
     }

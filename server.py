@@ -109,26 +109,13 @@ class CompressedHandler(http.server.SimpleHTTPRequestHandler):
             pass
 
     def serve_compressed(self, kind, rel_path):
-        # Flatten path for cache filename
-        safe_rel = rel_path.replace("/", "_").replace("\\", "_")
-        cache_file = os.path.join(CACHE_DIR, kind, safe_rel + ".webp")
-
-        if os.path.exists(cache_file) and os.path.getsize(cache_file) > 0:
-            try:
-                with open(cache_file, "rb") as f:
-                    data = f.read()
-                self.send_response(200)
-                self.send_header("Content-Type", "image/webp")
-                self.send_header("Content-Length", str(len(data)))
-                self.send_header("Cache-Control", "public, max-age=86400")
-                self.end_headers()
-                self.wfile.write(data)
-                return
-            except Exception:
-                pass
-
         # Resolve source file
-        if kind == "orig":
+        is_video_frame = rel_path.startswith("videos/")
+        if is_video_frame:
+            sub_png = os.path.splitext(rel_path[len("videos/"):])[0].replace("/", os.sep) + ".png"
+            src = os.path.join(DASHBOARD_DIR, "video_frames", kind, sub_png)
+            quality = 85 if kind == "orig" else 80
+        elif kind == "orig":
             src = os.path.join(ORIG_DIR, rel_path)
             quality = 85
         else:
@@ -144,6 +131,28 @@ class CompressedHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 self.send_error(404, f"File not found: {rel_path}")
                 return
+
+        # Flatten path for cache filename
+        safe_rel = rel_path.replace("/", "_").replace("\\", "_")
+        cache_file = os.path.join(CACHE_DIR, kind, safe_rel + ".webp")
+
+        if (
+            os.path.exists(cache_file)
+            and os.path.getsize(cache_file) > 0
+            and os.path.getmtime(cache_file) >= os.path.getmtime(src)
+        ):
+            try:
+                with open(cache_file, "rb") as f:
+                    data = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", "image/webp")
+                self.send_header("Content-Length", str(len(data)))
+                self.send_header("Cache-Control", "public, max-age=86400")
+                self.end_headers()
+                self.wfile.write(data)
+                return
+            except Exception:
+                pass
 
         try:
             with Image.open(src) as im:

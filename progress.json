@@ -158023,8 +158023,8 @@
           576
         ],
         "upscaled_dims": [
-          2560,
-          1440
+          2048,
+          1152
         ],
         "frames_src": 2376,
         "frames_out": 2376,
@@ -158041,43 +158041,4585 @@
           "range": "tv"
         },
         "model": "sd_v1_strong",
-        "size_bytes": 303036188,
-        "elapsed_s": 197.29,
-        "audit_elapsed_s": 78.6,
+        "size_bytes": 212894495,
+        "elapsed_s": 184.64,
+        "audit_elapsed_s": 47.1,
         "status": "PASS",
         "reasons": [],
-        "preview_clip": "videos/v001_mvop_cmp.mp4",
-        "preview_bytes": 2062069,
-        "thumb": "video_thumbs/v001_mvop.jpg",
+        "preview_frame": 91,
+        "thumb": "v001_mvop.jpg",
         "metrics": {
           "verdict": "PASS",
-          "psnr": 38.46,
-          "min_psnr": 34.72,
-          "ssim": 0.9987,
+          "psnr": 36.66,
+          "min_psnr": 33.8,
+          "ssim": 0.9985,
           "scene_samples": 11,
-          "temporal_ratio": 0.988,
+          "temporal_ratio": 0.98,
           "pts_diff_ms": 0.0,
           "orig_size": [
             1024,
             576
           ],
           "upscaled_size": [
-            2560,
-            1440
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/3d/ex_001.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_001.wmv",
+        "new_path": "videos/dx/3d/ex_001.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_001.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 149,
+        "frames_out": 149,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.966,
+        "out_duration_s": 4.934,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3845874,
+        "elapsed_s": 3.51,
+        "audit_elapsed_s": 2.25,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 99,
+        "thumb": "v003_ex_001.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.98,
+          "min_psnr": 35.45,
+          "ssim": 0.9965,
+          "scene_samples": 10,
+          "temporal_ratio": 0.98,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/mvk100.wmv": {
+        "type": "video",
+        "category": "videos/split_alpha",
+        "video_class": "split_alpha",
+        "original_path": "media/dx/mvk100.wmv",
+        "new_path": "videos/dx/mvk100.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/mvk100.mp4",
+        "orig_dims": [
+          400,
+          430
+        ],
+        "logical_dims": [
+          400,
+          215
+        ],
+        "upscaled_dims": [
+          1000,
+          1076
+        ],
+        "frames_src": 271,
+        "frames_out": 271,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 9.5,
+        "out_duration_s": 9.13,
+        "has_audio": true,
+        "audio_kbps": 2,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": null,
+          "transfer": null,
+          "primaries": null,
+          "range": null
+        },
+        "model": "lanczos_alpha",
+        "size_bytes": 2274979,
+        "elapsed_s": 1.78,
+        "audit_elapsed_s": 1.97,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 177,
+        "thumb": "v004_mvk100.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 43.35,
+          "min_psnr": 43.31,
+          "ssim": 0.9999,
+          "scene_samples": 10,
+          "temporal_ratio": 0.936,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            400,
+            430
+          ],
+          "upscaled_size": [
+            1000,
+            1076
+          ]
+        }
+      },
+      "videos/dx/mvpv.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvpv.wmv",
+        "new_path": "videos/dx/mvpv.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/mvpv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 3255,
+        "frames_out": 3255,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 108.502,
+        "out_duration_s": 108.586,
+        "has_audio": true,
+        "audio_kbps": 226,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 259865114,
+        "elapsed_s": 207.38,
+        "audit_elapsed_s": 54.38,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 1627,
+        "thumb": "v051_mvpv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 45.77,
+          "min_psnr": 43.82,
+          "ssim": 0.9298,
+          "scene_samples": 9,
+          "temporal_ratio": 1.063,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/3d/ex_002.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_002.wmv",
+        "new_path": "videos/dx/3d/ex_002.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_002.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3226773,
+        "elapsed_s": 3.69,
+        "audit_elapsed_s": 2.63,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v005_ex_002.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.44,
+          "min_psnr": 35.81,
+          "ssim": 0.997,
+          "scene_samples": 9,
+          "temporal_ratio": 0.981,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_003.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_003.wmv",
+        "new_path": "videos/dx/3d/ex_003.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_003.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 4058257,
+        "elapsed_s": 3.64,
+        "audit_elapsed_s": 2.91,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v006_ex_003.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.42,
+          "min_psnr": 35.07,
+          "ssim": 0.9964,
+          "scene_samples": 9,
+          "temporal_ratio": 0.983,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_004.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_004.wmv",
+        "new_path": "videos/dx/3d/ex_004.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_004.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2882427,
+        "elapsed_s": 3.57,
+        "audit_elapsed_s": 2.03,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v007_ex_004.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.65,
+          "min_psnr": 33.96,
+          "ssim": 0.9964,
+          "scene_samples": 9,
+          "temporal_ratio": 0.938,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_005.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_005.wmv",
+        "new_path": "videos/dx/3d/ex_005.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_005.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3184811,
+        "elapsed_s": 3.41,
+        "audit_elapsed_s": 2.32,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v008_ex_005.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.75,
+          "min_psnr": 33.96,
+          "ssim": 0.9963,
+          "scene_samples": 9,
+          "temporal_ratio": 1.04,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_006.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_006.wmv",
+        "new_path": "videos/dx/3d/ex_006.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_006.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2531803,
+        "elapsed_s": 3.54,
+        "audit_elapsed_s": 2.0,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v009_ex_006.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.8,
+          "min_psnr": 36.17,
+          "ssim": 0.9972,
+          "scene_samples": 9,
+          "temporal_ratio": 1.065,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_007.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_007.wmv",
+        "new_path": "videos/dx/3d/ex_007.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_007.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2752867,
+        "elapsed_s": 3.4,
+        "audit_elapsed_s": 2.08,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v010_ex_007.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.92,
+          "min_psnr": 36.56,
+          "ssim": 0.9973,
+          "scene_samples": 9,
+          "temporal_ratio": 0.983,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_008.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_008.wmv",
+        "new_path": "videos/dx/3d/ex_008.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_008.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3116524,
+        "elapsed_s": 3.65,
+        "audit_elapsed_s": 1.88,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 45,
+        "thumb": "v011_ex_008.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.22,
+          "min_psnr": 35.77,
+          "ssim": 0.9983,
+          "scene_samples": 9,
+          "temporal_ratio": 1.025,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_009.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_009.wmv",
+        "new_path": "videos/dx/3d/ex_009.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_009.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3091988,
+        "elapsed_s": 3.37,
+        "audit_elapsed_s": 1.84,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 45,
+        "thumb": "v012_ex_009.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.03,
+          "min_psnr": 35.53,
+          "ssim": 0.9982,
+          "scene_samples": 9,
+          "temporal_ratio": 1.03,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_010.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_010.wmv",
+        "new_path": "videos/dx/3d/ex_010.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_010.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3061225,
+        "elapsed_s": 3.36,
+        "audit_elapsed_s": 1.82,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 45,
+        "thumb": "v013_ex_010.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.98,
+          "min_psnr": 35.47,
+          "ssim": 0.998,
+          "scene_samples": 9,
+          "temporal_ratio": 1.033,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_011.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_011.wmv",
+        "new_path": "videos/dx/3d/ex_011.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_011.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2834373,
+        "elapsed_s": 3.35,
+        "audit_elapsed_s": 1.96,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v014_ex_011.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.41,
+          "min_psnr": 35.63,
+          "ssim": 0.9979,
+          "scene_samples": 9,
+          "temporal_ratio": 0.975,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_012.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_012.wmv",
+        "new_path": "videos/dx/3d/ex_012.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_012.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2999912,
+        "elapsed_s": 3.44,
+        "audit_elapsed_s": 1.95,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v015_ex_012.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.93,
+          "min_psnr": 35.07,
+          "ssim": 0.9982,
+          "scene_samples": 9,
+          "temporal_ratio": 0.969,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_013.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_013.wmv",
+        "new_path": "videos/dx/3d/ex_013.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_013.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2459911,
+        "elapsed_s": 3.49,
+        "audit_elapsed_s": 1.77,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v016_ex_013.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.28,
+          "min_psnr": 36.87,
+          "ssim": 0.9973,
+          "scene_samples": 9,
+          "temporal_ratio": 0.973,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_014.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_014.wmv",
+        "new_path": "videos/dx/3d/ex_014.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_014.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2197723,
+        "elapsed_s": 3.55,
+        "audit_elapsed_s": 2.1,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v017_ex_014.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.09,
+          "min_psnr": 36.43,
+          "ssim": 0.9967,
+          "scene_samples": 9,
+          "temporal_ratio": 1.024,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_015.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_015.wmv",
+        "new_path": "videos/dx/3d/ex_015.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_015.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2733106,
+        "elapsed_s": 3.76,
+        "audit_elapsed_s": 2.2,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 45,
+        "thumb": "v018_ex_015.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.5,
+          "min_psnr": 35.9,
+          "ssim": 0.9978,
+          "scene_samples": 9,
+          "temporal_ratio": 1.0,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_016.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_016.wmv",
+        "new_path": "videos/dx/3d/ex_016.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_016.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2733245,
+        "elapsed_s": 3.69,
+        "audit_elapsed_s": 1.75,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v019_ex_016.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.59,
+          "min_psnr": 36.2,
+          "ssim": 0.9972,
+          "scene_samples": 9,
+          "temporal_ratio": 1.016,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_017.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_017.wmv",
+        "new_path": "videos/dx/3d/ex_017.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_017.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2713572,
+        "elapsed_s": 3.36,
+        "audit_elapsed_s": 1.77,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v020_ex_017.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.83,
+          "min_psnr": 36.31,
+          "ssim": 0.9979,
+          "scene_samples": 9,
+          "temporal_ratio": 1.0,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_018.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_018.wmv",
+        "new_path": "videos/dx/3d/ex_018.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_018.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2237395,
+        "elapsed_s": 3.19,
+        "audit_elapsed_s": 3.84,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v021_ex_018.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.68,
+          "min_psnr": 35.93,
+          "ssim": 0.9985,
+          "scene_samples": 9,
+          "temporal_ratio": 1.08,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_019.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_019.wmv",
+        "new_path": "videos/dx/3d/ex_019.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_019.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2208279,
+        "elapsed_s": 4.29,
+        "audit_elapsed_s": 2.01,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v022_ex_019.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.87,
+          "min_psnr": 36.16,
+          "ssim": 0.9983,
+          "scene_samples": 9,
+          "temporal_ratio": 1.079,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_020.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_020.wmv",
+        "new_path": "videos/dx/3d/ex_020.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_020.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2132846,
+        "elapsed_s": 3.63,
+        "audit_elapsed_s": 1.7,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v023_ex_020.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.09,
+          "min_psnr": 37.76,
+          "ssim": 0.9975,
+          "scene_samples": 9,
+          "temporal_ratio": 1.044,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_021.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_021.wmv",
+        "new_path": "videos/dx/3d/ex_021.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_021.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 1749594,
+        "elapsed_s": 3.68,
+        "audit_elapsed_s": 3.46,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v024_ex_021.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.86,
+          "min_psnr": 38.59,
+          "ssim": 0.9979,
+          "scene_samples": 9,
+          "temporal_ratio": 1.046,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_022.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_022.wmv",
+        "new_path": "videos/dx/3d/ex_022.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_022.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2048879,
+        "elapsed_s": 3.87,
+        "audit_elapsed_s": 1.78,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v025_ex_022.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.27,
+          "min_psnr": 37.88,
+          "ssim": 0.9974,
+          "scene_samples": 9,
+          "temporal_ratio": 1.043,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/mvop02.wmv": {
+        "type": "video",
+        "category": "videos/16x9_anime",
+        "video_class": "16x9_anime",
+        "original_path": "media/dx/mvop02.wmv",
+        "new_path": "videos/dx/mvop02.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/mvop02.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 2377,
+        "frames_out": 2377,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 85.46,
+        "out_duration_s": 85.461,
+        "has_audio": true,
+        "audio_kbps": 244,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 213210168,
+        "elapsed_s": 185.85,
+        "audit_elapsed_s": 44.28,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 86,
+        "thumb": "v002_mvop02.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.54,
+          "min_psnr": 33.97,
+          "ssim": 0.9981,
+          "scene_samples": 11,
+          "temporal_ratio": 0.984,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/3d/ex_023.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_023.wmv",
+        "new_path": "videos/dx/3d/ex_023.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_023.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 1772843,
+        "elapsed_s": 3.17,
+        "audit_elapsed_s": 1.88,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v026_ex_023.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.78,
+          "min_psnr": 38.48,
+          "ssim": 0.9978,
+          "scene_samples": 9,
+          "temporal_ratio": 1.048,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_024.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_024.wmv",
+        "new_path": "videos/dx/3d/ex_024.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_024.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2006211,
+        "elapsed_s": 3.13,
+        "audit_elapsed_s": 1.62,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v027_ex_024.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.3,
+          "min_psnr": 37.49,
+          "ssim": 0.9974,
+          "scene_samples": 9,
+          "temporal_ratio": 1.036,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_025.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_025.wmv",
+        "new_path": "videos/dx/3d/ex_025.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_025.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 1736405,
+        "elapsed_s": 3.09,
+        "audit_elapsed_s": 1.53,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v028_ex_025.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.79,
+          "min_psnr": 38.58,
+          "ssim": 0.9978,
+          "scene_samples": 9,
+          "temporal_ratio": 1.044,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_026.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_026.wmv",
+        "new_path": "videos/dx/3d/ex_026.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_026.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2001526,
+        "elapsed_s": 3.05,
+        "audit_elapsed_s": 1.57,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v029_ex_026.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.32,
+          "min_psnr": 37.9,
+          "ssim": 0.9976,
+          "scene_samples": 9,
+          "temporal_ratio": 1.04,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_027.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_027.wmv",
+        "new_path": "videos/dx/3d/ex_027.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_027.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3292727,
+        "elapsed_s": 3.23,
+        "audit_elapsed_s": 1.95,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v030_ex_027.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.87,
+          "min_psnr": 35.23,
+          "ssim": 0.9981,
+          "scene_samples": 9,
+          "temporal_ratio": 1.029,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_028.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_028.wmv",
+        "new_path": "videos/dx/3d/ex_028.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_028.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2927334,
+        "elapsed_s": 3.42,
+        "audit_elapsed_s": 1.78,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v031_ex_028.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.9,
+          "min_psnr": 35.3,
+          "ssim": 0.9982,
+          "scene_samples": 9,
+          "temporal_ratio": 1.064,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_029.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_029.wmv",
+        "new_path": "videos/dx/3d/ex_029.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_029.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2730796,
+        "elapsed_s": 3.23,
+        "audit_elapsed_s": 1.69,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v032_ex_029.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.7,
+          "min_psnr": 35.29,
+          "ssim": 0.9981,
+          "scene_samples": 9,
+          "temporal_ratio": 0.991,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_030.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_030.wmv",
+        "new_path": "videos/dx/3d/ex_030.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_030.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2513289,
+        "elapsed_s": 3.2,
+        "audit_elapsed_s": 1.71,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v033_ex_030.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.03,
+          "min_psnr": 36.78,
+          "ssim": 0.9976,
+          "scene_samples": 9,
+          "temporal_ratio": 1.018,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_031.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_031.wmv",
+        "new_path": "videos/dx/3d/ex_031.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_031.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2725332,
+        "elapsed_s": 3.22,
+        "audit_elapsed_s": 1.72,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v034_ex_031.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.76,
+          "min_psnr": 35.52,
+          "ssim": 0.9981,
+          "scene_samples": 9,
+          "temporal_ratio": 0.994,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_032.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_032.wmv",
+        "new_path": "videos/dx/3d/ex_032.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_032.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2609966,
+        "elapsed_s": 3.27,
+        "audit_elapsed_s": 1.75,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v035_ex_032.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.64,
+          "min_psnr": 36.32,
+          "ssim": 0.9977,
+          "scene_samples": 9,
+          "temporal_ratio": 0.993,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_033.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_033.wmv",
+        "new_path": "videos/dx/3d/ex_033.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_033.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3148727,
+        "elapsed_s": 3.3,
+        "audit_elapsed_s": 2.0,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v036_ex_033.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.06,
+          "min_psnr": 33.24,
+          "ssim": 0.998,
+          "scene_samples": 9,
+          "temporal_ratio": 1.089,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_034.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_034.wmv",
+        "new_path": "videos/dx/3d/ex_034.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_034.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3642161,
+        "elapsed_s": 3.43,
+        "audit_elapsed_s": 2.04,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v037_ex_034.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.04,
+          "min_psnr": 34.03,
+          "ssim": 0.9977,
+          "scene_samples": 9,
+          "temporal_ratio": 0.988,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_035.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_035.wmv",
+        "new_path": "videos/dx/3d/ex_035.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_035.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2975481,
+        "elapsed_s": 3.27,
+        "audit_elapsed_s": 1.77,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v038_ex_035.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.83,
+          "min_psnr": 34.41,
+          "ssim": 0.9988,
+          "scene_samples": 9,
+          "temporal_ratio": 0.973,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_036.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_036.wmv",
+        "new_path": "videos/dx/3d/ex_036.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_036.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3542795,
+        "elapsed_s": 3.26,
+        "audit_elapsed_s": 1.88,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v039_ex_036.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.32,
+          "min_psnr": 34.12,
+          "ssim": 0.9982,
+          "scene_samples": 9,
+          "temporal_ratio": 0.99,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_037.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_037.wmv",
+        "new_path": "videos/dx/3d/ex_037.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_037.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3139370,
+        "elapsed_s": 3.31,
+        "audit_elapsed_s": 1.93,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v040_ex_037.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.46,
+          "min_psnr": 34.29,
+          "ssim": 0.9977,
+          "scene_samples": 9,
+          "temporal_ratio": 0.967,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_038.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_038.wmv",
+        "new_path": "videos/dx/3d/ex_038.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_038.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3365245,
+        "elapsed_s": 3.31,
+        "audit_elapsed_s": 1.87,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v041_ex_038.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.92,
+          "min_psnr": 34.67,
+          "ssim": 0.9986,
+          "scene_samples": 9,
+          "temporal_ratio": 0.989,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_039.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_039.wmv",
+        "new_path": "videos/dx/3d/ex_039.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_039.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3107915,
+        "elapsed_s": 3.28,
+        "audit_elapsed_s": 1.81,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v042_ex_039.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.74,
+          "min_psnr": 35.43,
+          "ssim": 0.9977,
+          "scene_samples": 9,
+          "temporal_ratio": 0.994,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_040.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_040.wmv",
+        "new_path": "videos/dx/3d/ex_040.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_040.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3391675,
+        "elapsed_s": 3.26,
+        "audit_elapsed_s": 1.86,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v043_ex_040.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 33.74,
+          "min_psnr": 33.5,
+          "ssim": 0.9988,
+          "scene_samples": 9,
+          "temporal_ratio": 0.969,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_041.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_041.wmv",
+        "new_path": "videos/dx/3d/ex_041.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_041.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3118209,
+        "elapsed_s": 3.28,
+        "audit_elapsed_s": 1.93,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v044_ex_041.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.82,
+          "min_psnr": 34.23,
+          "ssim": 0.9967,
+          "scene_samples": 9,
+          "temporal_ratio": 0.984,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_042.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_042.wmv",
+        "new_path": "videos/dx/3d/ex_042.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_042.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 1582535,
+        "elapsed_s": 2.99,
+        "audit_elapsed_s": 1.56,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 120,
+        "thumb": "v045_ex_042.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.82,
+          "min_psnr": 37.17,
+          "ssim": 0.9978,
+          "scene_samples": 9,
+          "temporal_ratio": 0.937,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_043.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_043.wmv",
+        "new_path": "videos/dx/3d/ex_043.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_043.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3093415,
+        "elapsed_s": 3.3,
+        "audit_elapsed_s": 1.96,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 105,
+        "thumb": "v046_ex_043.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 34.91,
+          "min_psnr": 34.22,
+          "ssim": 0.9976,
+          "scene_samples": 9,
+          "temporal_ratio": 1.049,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_044.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_044.wmv",
+        "new_path": "videos/dx/3d/ex_044.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_044.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2240327,
+        "elapsed_s": 3.2,
+        "audit_elapsed_s": 1.71,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v047_ex_044.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.77,
+          "min_psnr": 35.48,
+          "ssim": 0.9979,
+          "scene_samples": 9,
+          "temporal_ratio": 0.981,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_045.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_045.wmv",
+        "new_path": "videos/dx/3d/ex_045.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_045.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2242758,
+        "elapsed_s": 3.23,
+        "audit_elapsed_s": 1.72,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 75,
+        "thumb": "v048_ex_045.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.76,
+          "min_psnr": 35.65,
+          "ssim": 0.9979,
+          "scene_samples": 9,
+          "temporal_ratio": 0.991,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/3d/ex_046.wmv": {
+        "type": "video",
+        "category": "videos/1x1_3d",
+        "video_class": "1x1_3d",
+        "original_path": "media/dx/3d/ex_046.wmv",
+        "new_path": "videos/dx/3d/ex_046.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/3d/ex_046.mp4",
+        "orig_dims": [
+          400,
+          400
+        ],
+        "logical_dims": [
+          400,
+          400
+        ],
+        "upscaled_dims": [
+          800,
+          800
+        ],
+        "frames_src": 149,
+        "frames_out": 149,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.966,
+        "out_duration_s": 4.934,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 2619832,
+        "elapsed_s": 3.22,
+        "audit_elapsed_s": 1.89,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 71,
+        "thumb": "v049_ex_046.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.64,
+          "min_psnr": 36.56,
+          "ssim": 0.9964,
+          "scene_samples": 10,
+          "temporal_ratio": 0.957,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            400,
+            400
+          ],
+          "upscaled_size": [
+            800,
+            800
+          ]
+        }
+      },
+      "videos/dx/mvm禍.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvm禍.wmv",
+        "new_path": "videos/dx/mvm禍.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v050_mvm.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 240,
+        "frames_out": 240,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 7.999,
+        "out_duration_s": 7.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 24114945,
+        "elapsed_s": 18.44,
+        "audit_elapsed_s": 11.54,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 207,
+        "thumb": "v050_mvm.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.66,
+          "min_psnr": 33.48,
+          "ssim": 0.9974,
+          "scene_samples": 12,
+          "temporal_ratio": 1.033,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mvインメルマン.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvインメルマン.wmv",
+        "new_path": "videos/dx/mvインメルマン.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v053_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 136,
+        "frames_out": 136,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.533,
+        "out_duration_s": 4.501,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 6098726,
+        "elapsed_s": 8.55,
+        "audit_elapsed_s": 6.84,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 54,
+        "thumb": "v053_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.03,
+          "min_psnr": 36.14,
+          "ssim": 0.9968,
+          "scene_samples": 10,
+          "temporal_ratio": 0.614,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mvアベンジ登場.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvアベンジ登場.wmv",
+        "new_path": "videos/dx/mvアベンジ登場.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v052_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 400,
+        "frames_out": 400,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 13.333,
+        "out_duration_s": 13.301,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 40430101,
+        "elapsed_s": 27.87,
+        "audit_elapsed_s": 20.48,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 255,
+        "thumb": "v052_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 40.41,
+          "min_psnr": 30.33,
+          "ssim": 0.9966,
+          "scene_samples": 10,
+          "temporal_ratio": 1.013,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mvパラドックス.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvパラドックス.wmv",
+        "new_path": "videos/dx/mvパラドックス.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v054_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 45,
+        "frames_out": 45,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 1.499,
+        "out_duration_s": 1.467,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 6307441,
+        "elapsed_s": 6.2,
+        "audit_elapsed_s": 5.49,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 22,
+        "thumb": "v054_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.46,
+          "min_psnr": 33.41,
+          "ssim": 0.9974,
+          "scene_samples": 9,
+          "temporal_ratio": 1.027,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mvパラドックス矢.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mvパラドックス矢.wmv",
+        "new_path": "videos/dx/mvパラドックス矢.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v055_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 30,
+        "frames_out": 30,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 1.0,
+        "out_duration_s": 0.984,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 413622,
+        "elapsed_s": 2.55,
+        "audit_elapsed_s": 1.5,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v055_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 62.08,
+          "min_psnr": 43.41,
+          "ssim": 0.9999,
+          "scene_samples": 3,
+          "temporal_ratio": 0.945,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_チャキンチャキキン.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_チャキンチャキキン.wmv",
+        "new_path": "videos/dx/mv剣戟_チャキンチャキキン.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v056_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 35,
+        "frames_out": 35,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 1.166,
+        "out_duration_s": 1.15,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 638948,
+        "elapsed_s": 3.14,
+        "audit_elapsed_s": 1.79,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v056_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 44.92,
+          "min_psnr": 36.1,
+          "ssim": 0.9998,
+          "scene_samples": 5,
+          "temporal_ratio": 0.956,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_チャキーンチャキキーン.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_チャキーンチャキキーン.wmv",
+        "new_path": "videos/dx/mv剣戟_チャキーンチャキキーン.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v057_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 50,
+        "frames_out": 50,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 1.666,
+        "out_duration_s": 1.65,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 666884,
+        "elapsed_s": 3.94,
+        "audit_elapsed_s": 1.89,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v057_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 60.79,
+          "min_psnr": 36.1,
+          "ssim": 0.9995,
+          "scene_samples": 9,
+          "temporal_ratio": 0.493,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_上からひねり.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_上からひねり.wmv",
+        "new_path": "videos/dx/mv剣戟_上からひねり.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v058_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 20,
+        "frames_out": 20,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 0.666,
+        "out_duration_s": 0.65,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 399437,
+        "elapsed_s": 2.39,
+        "audit_elapsed_s": 1.21,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v058_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 54.86,
+          "min_psnr": 36.1,
+          "ssim": 0.9999,
+          "scene_samples": 2,
+          "temporal_ratio": 0.625,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_下から上.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_下から上.wmv",
+        "new_path": "videos/dx/mv剣戟_下から上.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v059_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 20,
+        "frames_out": 20,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 0.666,
+        "out_duration_s": 0.65,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 304441,
+        "elapsed_s": 2.18,
+        "audit_elapsed_s": 1.13,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v059_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 57.48,
+          "min_psnr": 36.1,
+          "ssim": 0.9999,
+          "scene_samples": 2,
+          "temporal_ratio": 0.503,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_右から左.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_右から左.wmv",
+        "new_path": "videos/dx/mv剣戟_右から左.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v060_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 20,
+        "frames_out": 20,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 0.666,
+        "out_duration_s": 0.65,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 199973,
+        "elapsed_s": 2.21,
+        "audit_elapsed_s": 1.12,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v060_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 56.18,
+          "min_psnr": 36.1,
+          "ssim": 0.9999,
+          "scene_samples": 2,
+          "temporal_ratio": 0.497,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv剣戟_左から右.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv剣戟_左から右.wmv",
+        "new_path": "videos/dx/mv剣戟_左から右.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v061_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 20,
+        "frames_out": 20,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 0.666,
+        "out_duration_s": 0.65,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 272754,
+        "elapsed_s": 2.29,
+        "audit_elapsed_s": 1.14,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v061_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 47.72,
+          "min_psnr": 36.1,
+          "ssim": 0.9995,
+          "scene_samples": 2,
+          "temporal_ratio": 0.503,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv同田貫_a.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv同田貫_a.wmv",
+        "new_path": "videos/dx/mv同田貫_a.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v063_mv_a.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 90,
+        "frames_out": 90,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 2.999,
+        "out_duration_s": 2.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 4680425,
+        "elapsed_s": 6.63,
+        "audit_elapsed_s": 4.88,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 42,
+        "thumb": "v063_mv_a.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 63.21,
+          "min_psnr": 36.99,
+          "ssim": 0.9949,
+          "scene_samples": 10,
+          "temporal_ratio": 0.917,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv同田貫_b.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv同田貫_b.wmv",
+        "new_path": "videos/dx/mv同田貫_b.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v064_mv_b.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 162,
+        "frames_out": 162,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 5.399,
+        "out_duration_s": 5.367,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 11687657,
+        "elapsed_s": 14.52,
+        "audit_elapsed_s": 8.77,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 79,
+        "thumb": "v064_mv_b.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 48.77,
+          "min_psnr": 36.13,
+          "ssim": 0.9987,
+          "scene_samples": 11,
+          "temporal_ratio": 0.985,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv威.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv威.wmv",
+        "new_path": "videos/dx/mv威.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v065_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 60,
+        "frames_out": 60,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 1.999,
+        "out_duration_s": 1.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 3394014,
+        "elapsed_s": 4.69,
+        "audit_elapsed_s": 8.42,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 27,
+        "thumb": "v065_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.39,
+          "min_psnr": 35.31,
+          "ssim": 0.9996,
+          "scene_samples": 10,
+          "temporal_ratio": 1.001,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv合体.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv合体.wmv",
+        "new_path": "videos/dx/mv合体.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v062_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 900,
+        "frames_out": 900,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 29.999,
+        "out_duration_s": 29.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 65224360,
+        "elapsed_s": 62.79,
+        "audit_elapsed_s": 41.44,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 450,
+        "thumb": "v062_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.45,
+          "min_psnr": 38.25,
+          "ssim": 0.9997,
+          "scene_samples": 12,
+          "temporal_ratio": 1.003,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv小彗星_a.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv小彗星_a.wmv",
+        "new_path": "videos/dx/mv小彗星_a.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v066_mv_a.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 9044260,
+        "elapsed_s": 12.67,
+        "audit_elapsed_s": 8.35,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 90,
+        "thumb": "v066_mv_a.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 39.72,
+          "min_psnr": 36.14,
+          "ssim": 0.9937,
+          "scene_samples": 10,
+          "temporal_ratio": 1.0,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv小彗星_b.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv小彗星_b.wmv",
+        "new_path": "videos/dx/mv小彗星_b.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v067_mv_b.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 59,
+        "frames_out": 59,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 1.966,
+        "out_duration_s": 1.934,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 4150484,
+        "elapsed_s": 5.51,
+        "audit_elapsed_s": 4.97,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 15,
+        "thumb": "v067_mv_b.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.56,
+          "min_psnr": 36.11,
+          "ssim": 0.9778,
+          "scene_samples": 10,
+          "temporal_ratio": 0.998,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv小彗星_c.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv小彗星_c.wmv",
+        "new_path": "videos/dx/mv小彗星_c.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v068_mv_c.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 75,
+        "frames_out": 75,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 2.499,
+        "out_duration_s": 2.467,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 4850123,
+        "elapsed_s": 5.73,
+        "audit_elapsed_s": 4.2,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 36,
+        "thumb": "v068_mv_c.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.59,
+          "min_psnr": 35.76,
+          "ssim": 0.9992,
+          "scene_samples": 9,
+          "temporal_ratio": 1.012,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv摩天蛟.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv摩天蛟.wmv",
+        "new_path": "videos/dx/mv摩天蛟.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v069_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 300,
+        "frames_out": 300,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 9.999,
+        "out_duration_s": 9.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 18790761,
+        "elapsed_s": 21.14,
+        "audit_elapsed_s": 9.18,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 45,
+        "thumb": "v069_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 44.5,
+          "min_psnr": 37.76,
+          "ssim": 0.9996,
+          "scene_samples": 10,
+          "temporal_ratio": 1.068,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv村正登場.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv村正登場.wmv",
+        "new_path": "videos/dx/mv村正登場.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v071_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 150,
+        "frames_out": 150,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 4.999,
+        "out_duration_s": 4.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 9323565,
+        "elapsed_s": 11.59,
+        "audit_elapsed_s": 10.01,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 30,
+        "thumb": "v071_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.94,
+          "min_psnr": 37.53,
+          "ssim": 0.998,
+          "scene_samples": 9,
+          "temporal_ratio": 1.04,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv正宗ＶＳ村正.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv正宗ＶＳ村正.wmv",
+        "new_path": "videos/dx/mv正宗ＶＳ村正.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v072_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 151,
+        "frames_out": 151,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 5.033,
+        "out_duration_s": 5.001,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 11391283,
+        "elapsed_s": 12.67,
+        "audit_elapsed_s": 11.45,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 90,
+        "thumb": "v072_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 37.52,
+          "min_psnr": 36.73,
+          "ssim": 0.9992,
+          "scene_samples": 9,
+          "temporal_ratio": 1.007,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv景明装甲.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv景明装甲.wmv",
+        "new_path": "videos/dx/mv景明装甲.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v070_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 684,
+        "frames_out": 684,
+        "pts_max_diff_ms": 0.0,
+        "duration_s": 23.266,
+        "out_duration_s": 22.912,
+        "has_audio": true,
+        "audio_kbps": 2,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 75448633,
+        "elapsed_s": 55.96,
+        "audit_elapsed_s": 17.91,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 355,
+        "thumb": "v070_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 47.4,
+          "min_psnr": 33.32,
+          "ssim": 0.9978,
+          "scene_samples": 11,
+          "temporal_ratio": 0.98,
+          "pts_diff_ms": 0.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv焦屍剣.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv焦屍剣.wmv",
+        "new_path": "videos/dx/mv焦屍剣.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v073_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 89,
+        "frames_out": 89,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 2.966,
+        "out_duration_s": 2.934,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 5188083,
+        "elapsed_s": 9.45,
+        "audit_elapsed_s": 7.87,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 44,
+        "thumb": "v073_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.43,
+          "min_psnr": 35.07,
+          "ssim": 0.9979,
+          "scene_samples": 10,
+          "temporal_ratio": 1.081,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv真改疾走.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv真改疾走.wmv",
+        "new_path": "videos/dx/mv真改疾走.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v074_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 75,
+        "frames_out": 75,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 2.499,
+        "out_duration_s": 2.467,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 6406822,
+        "elapsed_s": 7.6,
+        "audit_elapsed_s": 5.02,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 50,
+        "thumb": "v074_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 38.24,
+          "min_psnr": 35.97,
+          "ssim": 0.9986,
+          "scene_samples": 11,
+          "temporal_ratio": 1.139,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv穿.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv穿.wmv",
+        "new_path": "videos/dx/mv穿.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v075_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 180,
+        "frames_out": 180,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 5.999,
+        "out_duration_s": 5.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 12154083,
+        "elapsed_s": 13.3,
+        "audit_elapsed_s": 7.42,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 90,
+        "thumb": "v075_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 36.92,
+          "min_psnr": 35.03,
+          "ssim": 0.9982,
+          "scene_samples": 11,
+          "temporal_ratio": 1.017,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv行進.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv行進.wmv",
+        "new_path": "videos/dx/mv行進.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v076_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 199,
+        "frames_out": 199,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 6.633,
+        "out_duration_s": 6.601,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 24493649,
+        "elapsed_s": 15.84,
+        "audit_elapsed_s": 16.44,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 129,
+        "thumb": "v076_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.81,
+          "min_psnr": 35.66,
+          "ssim": 0.998,
+          "scene_samples": 10,
+          "temporal_ratio": 1.045,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv魔王星.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv魔王星.wmv",
+        "new_path": "videos/dx/mv魔王星.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v078_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 90,
+        "frames_out": 90,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 2.999,
+        "out_duration_s": 2.967,
+        "has_audio": false,
+        "audio_kbps": 0,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 10054526,
+        "elapsed_s": 8.2,
+        "audit_elapsed_s": 6.31,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 60,
+        "thumb": "v078_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.29,
+          "min_psnr": 33.56,
+          "ssim": 0.9989,
+          "scene_samples": 10,
+          "temporal_ratio": 0.984,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
+          ]
+        }
+      },
+      "videos/dx/mv電磁抜刀_禍.wmv": {
+        "type": "video",
+        "category": "videos/16x9_cg",
+        "video_class": "16x9_cg",
+        "original_path": "media/dx/mv電磁抜刀_禍.wmv",
+        "new_path": "videos/dx/mv電磁抜刀_禍.wmv",
+        "output_file": "D:/OpenCode/Projects/AnimeJaNai_test/upscaled_videos/dx/v077_mv.mp4",
+        "orig_dims": [
+          1024,
+          576
+        ],
+        "logical_dims": [
+          1024,
+          576
+        ],
+        "upscaled_dims": [
+          2048,
+          1152
+        ],
+        "frames_src": 211,
+        "frames_out": 211,
+        "pts_max_diff_ms": 1.0,
+        "duration_s": 8.831,
+        "out_duration_s": 8.917,
+        "has_audio": true,
+        "audio_kbps": 253,
+        "audio_start_s": 0.0,
+        "color_tags": {
+          "space": "bt709",
+          "transfer": "bt709",
+          "primaries": "bt709",
+          "range": "tv"
+        },
+        "model": "sd_v1_strong",
+        "size_bytes": 42304249,
+        "elapsed_s": 20.43,
+        "audit_elapsed_s": 15.81,
+        "status": "PASS",
+        "reasons": [],
+        "preview_frame": 162,
+        "thumb": "v077_mv.jpg",
+        "metrics": {
+          "verdict": "PASS",
+          "psnr": 35.31,
+          "min_psnr": 32.33,
+          "ssim": 0.9945,
+          "scene_samples": 13,
+          "temporal_ratio": 1.024,
+          "pts_diff_ms": 1.0,
+          "orig_size": [
+            1024,
+            576
+          ],
+          "upscaled_size": [
+            2048,
+            1152
           ]
         }
       }
     },
     "summary": {
       "total": 78,
-      "finished": 1,
-      "passed": 1,
+      "finished": 78,
+      "passed": 78,
       "warned": 0,
       "failed": 0,
-      "percent": 1.3,
-      "updated_at": "2026-11-16T21:12:39.580876+02:00",
-      "output_bytes": 303036188,
-      "free_bytes": 861965918208,
+      "percent": 100.0,
+      "updated_at": "2026-11-17T06:11:45.027911+02:00",
+      "output_bytes": 1213007263,
+      "free_bytes": 859999412224,
       "model": "2x AnimeJaNai SD V1b34 Strong (FP16)"
     }
   }

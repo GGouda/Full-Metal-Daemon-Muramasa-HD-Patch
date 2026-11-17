@@ -5,6 +5,7 @@ orig/
 upscaled/
 videos/
 video_thumbs/
+video_frames/
 *.mp4
 *.webm
 test_2k.webp
