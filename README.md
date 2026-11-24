@@ -1,7 +1,7 @@
 # Full Metal Daemon Muramasa: 2K HD Patch
 
 Play **Full Metal Daemon Muramasa** (JAST USA English PC v1.04) in sharp 2560x1440 resolution. This patch replaces the original 1024x576 artwork, videos, and text with 2K HD versions and fixes memory crashes on modern Windows.
-
+Model: 4x DAT2 + SD V1b34 Strong
 ## Before and After
 
 These images alternate between the original game and the 2K HD patch. Want to drag a split slider yourself? [Open the interactive comparison page](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html).
