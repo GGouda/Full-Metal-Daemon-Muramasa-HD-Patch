@@ -6,17 +6,29 @@ Play **Full Metal Daemon Muramasa** (JAST USA English PC v1.04) in sharp 2560x14
 
 These images alternate between the original game and the 2K HD patch. Want to drag a split slider yourself? [Open the interactive comparison page](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html).
 
-| Tsurugi Armor CG | Overcast Park & Lake |
-| :---: | :---: |
-| ![Tsurugi Armor CG comparison](showcase_assets/01_armor_compare.webp) | ![Overcast Park and Lake comparison](showcase_assets/02_park_compare.webp) |
+### Tsurugi Armor CG
 
-| Professor's Study | Event CG |
-| :---: | :---: |
-| ![Professor's Study comparison](showcase_assets/03_study_compare.webp) | ![Event CG comparison](showcase_assets/04_evcg_compare.webp) |
+<img src="showcase_assets/01_armor_compare.webp" alt="Tsurugi Armor CG comparison" width="100%">
 
-| In-Game Menu | HD Font & Text |
-| :---: | :---: |
-| ![In-Game Menu comparison](showcase_assets/05_ui_compare.webp) | ![HD Font and Text comparison](showcase_assets/06_text_compare.webp) |
+### Overcast Park & Lake
+
+<img src="showcase_assets/02_park_compare.webp" alt="Overcast Park and Lake comparison" width="100%">
+
+### Professor's Study
+
+<img src="showcase_assets/03_study_compare.webp" alt="Professor's Study comparison" width="100%">
+
+### Event CG
+
+<img src="showcase_assets/04_evcg_compare.webp" alt="Event CG comparison" width="100%">
+
+### In-Game Menu
+
+<img src="showcase_assets/05_ui_compare.webp" alt="In-Game Menu comparison" width="100%">
+
+### HD Font & Text
+
+<img src="showcase_assets/06_text_compare.webp" alt="HD Font and Text comparison" width="100%">
 
 ## What You Get
 
