@@ -4,31 +4,38 @@ Play **Full Metal Daemon Muramasa** (JAST USA English PC v1.04) in sharp 2560x14
 Model: 4x DAT2 + SD V1b34 Strong
 ## Before and After
 
-These images alternate between the original game and the 2K HD patch. Want to drag a split slider yourself? [Open the interactive comparison page](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html).
+<p align="center">
+  <a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html">
+    <img src="https://img.shields.io/badge/OPEN_INTERACTIVE_2K_SLIDER_%26_ZOOM_COMPARISON-DC2626?style=for-the-badge&logo=githubpages&logoColor=white" alt="Open Interactive 2K Slider & Zoom Comparison" height="42">
+  </a>
+</p>
+
+> [!TIP]
+> Click the red button above **or click any comparison image below** to open the [interactive 2K comparison page](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html) with a draggable split slider, **2x / 3x zoom**, and the **live Opening Movie comparison**.
 
 ### Tsurugi Armor CG
 
-<img src="showcase_assets/01_armor_compare.webp" alt="Tsurugi Armor CG comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/01_armor_compare.webp" alt="Tsurugi Armor CG comparison" width="100%"></a>
 
 ### Overcast Park & Lake
 
-<img src="showcase_assets/02_park_compare.webp" alt="Overcast Park and Lake comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/02_park_compare.webp" alt="Overcast Park and Lake comparison" width="100%"></a>
 
 ### Professor's Study
 
-<img src="showcase_assets/03_study_compare.webp" alt="Professor's Study comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/03_study_compare.webp" alt="Professor's Study comparison" width="100%"></a>
 
 ### Event CG
 
-<img src="showcase_assets/04_evcg_compare.webp" alt="Event CG comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/04_evcg_compare.webp" alt="Event CG comparison" width="100%"></a>
 
 ### In-Game Menu
 
-<img src="showcase_assets/05_ui_compare.webp" alt="In-Game Menu comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/05_ui_compare.webp" alt="In-Game Menu comparison" width="100%"></a>
 
 ### HD Font & Text
 
-<img src="showcase_assets/06_text_compare.webp" alt="HD Font and Text comparison" width="100%">
+<a href="https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html"><img src="showcase_assets/06_text_compare.webp" alt="HD Font and Text comparison" width="100%"></a>
 
 ## What You Get
 

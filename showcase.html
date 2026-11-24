@@ -124,9 +124,34 @@
       object-fit: cover;
       pointer-events: none;
     }
-    .img-before,
+    .compare-stage img {
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .layer-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .img-before-wrap,
     .vid-before {
       clip-path: inset(0 50% 0 0);
+    }
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .zoom-btn {
+      padding: 5px 10px;
+      font-size: 0.78rem;
+    }
+    .zoom-btn.active {
+      background: var(--crimson);
+      border-color: var(--crimson-hi);
+      color: #ffffff;
     }
     .is-hidden { display: none !important; }
     .slider-line {
@@ -243,7 +268,9 @@
 
     <div class="compare-stage" id="compare-stage">
       <img class="img-after" id="img-after" src="./showcase_assets/01_armor_after.webp" alt="2K HD Remaster">
-      <img class="img-before" id="img-before" src="./showcase_assets/01_armor_before.webp" alt="Original Stock">
+      <div class="layer-wrap img-before-wrap" id="img-before-wrap">
+        <img class="img-before" id="img-before" src="./showcase_assets/01_armor_before.webp" alt="Original Stock">
+      </div>
       <video class="vid-after is-hidden" id="vid-after" playsinline loop preload="metadata"></video>
       <video class="vid-before is-hidden" id="vid-before" playsinline loop muted preload="metadata"></video>
       <div class="label-pill label-before">Original (1024&times;576)</div>
@@ -260,7 +287,14 @@
     </div>
 
     <div class="controls-bar">
-      <span id="scene-caption">Drag the slider left/right (or use arrow keys) to compare Stock vs 2K Lossless HD.</span>
+      <span id="scene-caption">Drag slider or scroll wheel to zoom (drag image to pan when zoomed).</span>
+      <div class="zoom-controls" id="zoom-controls">
+        <span>Zoom:</span>
+        <button class="btn zoom-btn active" data-zoom="1" type="button">1x</button>
+        <button class="btn zoom-btn" data-zoom="2" type="button">2x</button>
+        <button class="btn zoom-btn" data-zoom="3" type="button">3x</button>
+        <button class="btn zoom-btn is-hidden" id="btn-zoom-reset" type="button">Reset</button>
+      </div>
       <div class="range-wrap">
         <span>Split:</span>
         <input type="range" id="split-range" min="0" max="100" value="50" aria-label="Comparison Split">
@@ -282,15 +316,21 @@
       { id: '09_burning_field',   type: 'image', title: '09. Burning Battlefield',   desc: 'Silver vs Crimson clash, embers & smoky horizon clarity' },
       { id: '10_crimson_visor',   type: 'image', title: '10. Crimson Armor Visor',   desc: 'Brushed steel scratches & glowing crimson visor gradient' },
       { id: '11_tea_party',       type: 'image', title: '11. Circuit Tea Party',     desc: 'Crisp character faces, glass highlights & background Tsurugi' },
-      { id: 'mvop',               type: 'video', title: '12. Opening Movie (Video)', desc: 'Live synchronized Original WMV vs 2K HD OP with interactive slider' },
+      { id: '12_story_text',      type: 'image', title: '12. In-Game Story Text',    desc: 'Crisp DirectX 11 dialogue font vs blurry stock rendering (try 2x/3x zoom!)' },
+      { id: '13_green_poem',      type: 'image', title: '13. Prologue Green Poem',   desc: 'Razor-sharp green prologue text glyphs & crisp drop shadow' },
+      { id: 'mvop',               type: 'video', title: '14. Opening Movie (Video)', desc: 'Live synchronized Original WMV vs 2K HD OP with interactive slider' },
     ];
 
     const tabsEl = document.getElementById('scene-tabs');
+    const imgBeforeWrap = document.getElementById('img-before-wrap');
     const imgBefore = document.getElementById('img-before');
     const imgAfter = document.getElementById('img-after');
     const vidBefore = document.getElementById('vid-before');
     const vidAfter = document.getElementById('vid-after');
     const videoControls = document.getElementById('video-controls');
+    const zoomControls = document.getElementById('zoom-controls');
+    const zoomBtns = Array.from(document.querySelectorAll('.zoom-btn[data-zoom]'));
+    const btnZoomReset = document.getElementById('btn-zoom-reset');
     const btnPlay = document.getElementById('btn-play');
     const btnMute = document.getElementById('btn-mute');
     const vidSeek = document.getElementById('vid-seek');
@@ -303,7 +343,11 @@
     const caption = document.getElementById('scene-caption');
 
     let pct = 50;
-    let dragging = false;
+    let dragMode = null; // 'split' | 'pan' | null
+    let panStart = { x: 0, y: 0, px: 0, py: 0 };
+    let zoom = 1;
+    let panX = 0;
+    let panY = 0;
     let activeType = 'image';
     let seekingVideo = false;
     let rafId = null;
@@ -314,10 +358,46 @@
       return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
     }
 
+    function applyZoomTransform() {
+      const rect = stage.getBoundingClientRect();
+      const maxX = Math.max(0, (rect.width * (zoom - 1)) / 2);
+      const maxY = Math.max(0, (rect.height * (zoom - 1)) / 2);
+      panX = Math.max(-maxX, Math.min(maxX, panX));
+      panY = Math.max(-maxY, Math.min(maxY, panY));
+      const tr = zoom <= 1.001 ? 'none' : `translate(${panX.toFixed(1)}px, ${panY.toFixed(1)}px) scale(${zoom})`;
+      imgBefore.style.transform = tr;
+      imgAfter.style.transform = tr;
+      zoomBtns.forEach(b => b.classList.toggle('active', Math.abs(parseFloat(b.dataset.zoom) - zoom) < 0.05));
+      btnZoomReset.classList.toggle('is-hidden', zoom <= 1.001);
+      if (!dragMode) {
+        stage.style.cursor = zoom > 1.001 && activeType === 'image' ? 'grab' : 'ew-resize';
+      }
+    }
+
+    function setZoom(newZ, clientX, clientY) {
+      const nextZ = Math.max(1, Math.min(4, Math.round(newZ * 2) / 2));
+      if (nextZ <= 1.001) {
+        zoom = 1;
+        panX = 0;
+        panY = 0;
+      } else if (nextZ !== zoom) {
+        if (clientX !== undefined && clientY !== undefined) {
+          const rect = stage.getBoundingClientRect();
+          const cx = clientX - (rect.left + rect.width / 2);
+          const cy = clientY - (rect.top + rect.height / 2);
+          const ratio = nextZ / zoom;
+          panX = cx - (cx - panX) * ratio;
+          panY = cy - (cy - panY) * ratio;
+        }
+        zoom = nextZ;
+      }
+      applyZoomTransform();
+    }
+
     function setSplit(val) {
       pct = Math.max(0, Math.min(100, val));
       const clip = `inset(0 ${100 - pct}% 0 0)`;
-      imgBefore.style.clipPath = clip;
+      imgBeforeWrap.style.clipPath = clip;
       vidBefore.style.clipPath = clip;
       line.style.left = `${pct}%`;
       handle.style.left = `${pct}%`;
@@ -368,9 +448,11 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.id === scene.id));
       activeType = scene.type || 'image';
       caption.textContent = scene.desc;
+      setZoom(1);
+      zoomControls.classList.toggle('is-hidden', activeType === 'video');
 
       if (activeType === 'video') {
-        imgBefore.classList.add('is-hidden');
+        imgBeforeWrap.classList.add('is-hidden');
         imgAfter.classList.add('is-hidden');
         vidBefore.classList.remove('is-hidden');
         vidAfter.classList.remove('is-hidden');
@@ -388,12 +470,15 @@
         vidBefore.classList.add('is-hidden');
         vidAfter.classList.add('is-hidden');
         videoControls.classList.add('is-hidden');
-        imgBefore.classList.remove('is-hidden');
+        imgBeforeWrap.classList.remove('is-hidden');
         imgAfter.classList.remove('is-hidden');
         imgBefore.src = `./showcase_assets/${scene.id}_before.webp`;
         imgAfter.src = `./showcase_assets/${scene.id}_after.webp`;
       }
     }
+
+    zoomBtns.forEach(b => b.addEventListener('click', () => setZoom(parseFloat(b.dataset.zoom))));
+    btnZoomReset.addEventListener('click', () => setZoom(1));
 
     btnPlay.addEventListener('click', () => {
       if (vidAfter.paused) playBoth();
@@ -433,19 +518,51 @@
       setSplit(((clientX - rect.left) / rect.width) * 100);
     }
 
+    stage.addEventListener('wheel', e => {
+      if (activeType !== 'image') return;
+      e.preventDefault();
+      setZoom(zoom + (e.deltaY < 0 ? 0.5 : -0.5), e.clientX, e.clientY);
+    }, { passive: false });
+
     stage.addEventListener('pointerdown', e => {
-      dragging = true;
+      const rect = stage.getBoundingClientRect();
+      const splitPx = rect.left + (pct / 100) * rect.width;
       stage.setPointerCapture(e.pointerId);
-      updateFromClientX(e.clientX);
+      if (activeType === 'image' && zoom > 1.001 && Math.abs(e.clientX - splitPx) > 28) {
+        dragMode = 'pan';
+        panStart = { x: e.clientX, y: e.clientY, px: panX, py: panY };
+        stage.style.cursor = 'grabbing';
+      } else {
+        dragMode = 'split';
+        stage.style.cursor = 'ew-resize';
+        updateFromClientX(e.clientX);
+      }
     });
     stage.addEventListener('pointermove', e => {
-      if (dragging) updateFromClientX(e.clientX);
+      if (dragMode === 'split') {
+        updateFromClientX(e.clientX);
+      } else if (dragMode === 'pan') {
+        panX = panStart.px + (e.clientX - panStart.x);
+        panY = panStart.py + (e.clientY - panStart.y);
+        applyZoomTransform();
+      } else if (activeType === 'image' && zoom > 1.001) {
+        const rect = stage.getBoundingClientRect();
+        const splitPx = rect.left + (pct / 100) * rect.width;
+        stage.style.cursor = Math.abs(e.clientX - splitPx) <= 28 ? 'ew-resize' : 'grab';
+      }
     });
-    window.addEventListener('pointerup', () => { dragging = false; });
+    window.addEventListener('pointerup', () => {
+      dragMode = null;
+      if (activeType === 'image' && zoom > 1.001) stage.style.cursor = 'grab';
+      else stage.style.cursor = 'ew-resize';
+    });
     range.addEventListener('input', e => setSplit(parseFloat(e.target.value)));
     window.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') setSplit(pct - 2);
       if (e.key === 'ArrowRight') setSplit(pct + 2);
+      if (e.key === '+' || e.key === '=') setZoom(zoom + 0.5);
+      if (e.key === '-') setZoom(zoom - 0.5);
+      if (e.key === '0') setZoom(1);
     });
   </script>
 </body>
