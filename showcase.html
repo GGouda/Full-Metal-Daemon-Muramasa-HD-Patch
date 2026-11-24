@@ -96,8 +96,8 @@
     .tab-btn strong {
       display: block;
       color: var(--text);
-      font-size: 0.95rem;
-      margin-bottom: 2px;
+      font-size: 0.92rem;
+      margin-bottom: 0;
     }
     .tab-btn.active {
       border-color: var(--crimson);
@@ -305,20 +305,20 @@
 
   <script>
     const scenes = [
-      { id: '01_armor',           type: 'image', title: '01. Tsurugi Armor CG',      desc: 'Crisp metallic grain, hammered iron & gold edge detail' },
-      { id: '02_park',            type: 'image', title: '02. Overcast Park BG',      desc: 'Sharp foliage, lamppost silhouette & water reflections' },
-      { id: '03_study',           type: 'image', title: "03. Professor's Study",     desc: 'Bookshelves, woodgrain & fine shadow lines' },
-      { id: '04_evcg',            type: 'image', title: '04. Event CG',              desc: 'Clean line art & 2.5x shading detail' },
-      { id: '05_ui',              type: 'image', title: '05. In-Game UI Menu',       desc: 'Razor-sharp settings parchment, sliders & UI labels' },
-      { id: '06_text',            type: 'image', title: '06. HD Font & Text',        desc: 'Crisp 2K typography vs original stock text rendering' },
-      { id: '07_muramasa_sprite', type: 'image', title: '07. Sansei Muramasa',       desc: 'Character sprite outfit weave, hair highlights & jewelry' },
-      { id: '08_ichijo_sprite',   type: 'image', title: '08. Ayane Ichijo',          desc: 'Crimson Kote gauntlet rivets, uniform & razor-sharp linework' },
-      { id: '09_burning_field',   type: 'image', title: '09. Burning Battlefield',   desc: 'Silver vs Crimson clash, embers & smoky horizon clarity' },
-      { id: '10_crimson_visor',   type: 'image', title: '10. Crimson Armor Visor',   desc: 'Brushed steel scratches & glowing crimson visor gradient' },
-      { id: '11_tea_party',       type: 'image', title: '11. Circuit Tea Party',     desc: 'Crisp character faces, glass highlights & background Tsurugi' },
-      { id: '12_story_text',      type: 'image', title: '12. In-Game Story Text',    desc: 'Crisp DirectX 11 dialogue font vs blurry stock rendering (try 2x/3x zoom!)' },
-      { id: '13_green_poem',      type: 'image', title: '13. Prologue Green Poem',   desc: 'Razor-sharp green prologue text glyphs & crisp drop shadow' },
-      { id: 'mvop',               type: 'video', title: '14. Opening Movie (Video)', desc: 'Live synchronized Original WMV vs 2K HD OP with interactive slider' },
+      { id: '01_armor',           type: 'image', title: '01. Tsurugi Armor CG' },
+      { id: '02_park',            type: 'image', title: '02. Overcast Park BG' },
+      { id: '03_study',           type: 'image', title: "03. Professor's Study" },
+      { id: '04_evcg',            type: 'image', title: '04. Event CG' },
+      { id: '05_ui',              type: 'image', title: '05. In-Game UI Menu' },
+      { id: '06_text',            type: 'image', title: '06. HD Font & Text' },
+      { id: '07_muramasa_sprite', type: 'image', title: '07. Sansei Muramasa' },
+      { id: '08_ichijo_sprite',   type: 'image', title: '08. Ayane Ichijo' },
+      { id: '09_burning_field',   type: 'image', title: '09. Burning Battlefield' },
+      { id: '10_crimson_visor',   type: 'image', title: '10. Crimson Armor Visor' },
+      { id: '11_tea_party',       type: 'image', title: '11. Circuit Tea Party' },
+      { id: '12_story_text',      type: 'image', title: '12. In-Game Story Text' },
+      { id: '13_green_poem',      type: 'image', title: '13. Prologue Green Poem' },
+      { id: 'mvop',               type: 'video', title: '14. Opening Movie (Video)' },
     ];
 
     const tabsEl = document.getElementById('scene-tabs');
@@ -447,7 +447,9 @@
     function selectScene(scene) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.id === scene.id));
       activeType = scene.type || 'image';
-      caption.textContent = scene.desc;
+      caption.textContent = activeType === 'video'
+        ? 'Drag the slider left/right while playing to compare Original vs 2K HD.'
+        : 'Drag slider or scroll wheel to zoom (drag image to pan when zoomed).';
       setZoom(1);
       zoomControls.classList.toggle('is-hidden', activeType === 'video');
 
@@ -507,7 +509,7 @@
       const btn = document.createElement('button');
       btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
       btn.dataset.id = sc.id;
-      btn.innerHTML = `<strong>${sc.title}</strong>${sc.desc}`;
+      btn.innerHTML = `<strong>${sc.title}</strong>`;
       btn.addEventListener('click', () => selectScene(sc));
       tabsEl.appendChild(btn);
     });
