@@ -50,7 +50,3 @@ The installer downloads the 2K asset packs (~8.06 GiB), checks file integrity, a
 
 - **Update**: Run a newer `Install_Muramasa_HD_Patch.exe` on the same game folder. It skips the 8 GiB asset packs you have and downloads the updated patch files.
 - **Uninstall**: Open `Install_Muramasa_HD_Patch.exe`, select your game folder, and click **Uninstall Patch**. This restores your original `muramasa_en.exe` and removes the patch files.
-
-## Asset List
-
-Browse the 5,460 images and 78 videos on the [Asset Verification Dashboard](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/).

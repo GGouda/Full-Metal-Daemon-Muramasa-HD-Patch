@@ -7,6 +7,7 @@ videos/
 video_thumbs/
 video_frames/
 *.mp4
+!showcase_assets/*.mp4
 *.webm
 test_2k.webp
 test_orig.webp

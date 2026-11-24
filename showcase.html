@@ -115,7 +115,8 @@
       touch-action: none;
       cursor: ew-resize;
     }
-    .compare-stage img {
+    .compare-stage img,
+    .compare-stage video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -123,15 +124,18 @@
       object-fit: cover;
       pointer-events: none;
     }
-    .img-before {
+    .img-before,
+    .vid-before {
       clip-path: inset(0 50% 0 0);
     }
+    .is-hidden { display: none !important; }
     .slider-line {
       position: absolute;
       top: 0;
       bottom: 0;
       left: 50%;
       width: 2px;
+      z-index: 8;
       background: var(--crimson-hi);
       box-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
       pointer-events: none;
@@ -141,6 +145,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
+      z-index: 9;
       transform: translate(-50%, -50%);
       width: 42px;
       height: 42px;
@@ -153,6 +158,31 @@
       font-weight: 700;
       font-size: 16px;
       pointer-events: none;
+    }
+    .video-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .video-controls .btn {
+      padding: 7px 14px;
+      font-size: 0.8rem;
+    }
+    .video-controls input[type="range"] {
+      flex: 1;
+      min-width: 180px;
+    }
+    .timecode {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+      min-width: 96px;
+      text-align: right;
     }
     .label-pill {
       position: absolute;
@@ -214,10 +244,19 @@
     <div class="compare-stage" id="compare-stage">
       <img class="img-after" id="img-after" src="./showcase_assets/01_armor_after.webp" alt="2K HD Remaster">
       <img class="img-before" id="img-before" src="./showcase_assets/01_armor_before.webp" alt="Original Stock">
+      <video class="vid-after is-hidden" id="vid-after" playsinline loop preload="metadata"></video>
+      <video class="vid-before is-hidden" id="vid-before" playsinline loop muted preload="metadata"></video>
       <div class="label-pill label-before">Original (1024&times;576)</div>
       <div class="label-pill label-after">2K HD Remaster (2560&times;1440)</div>
       <div class="slider-line" id="slider-line"></div>
       <div class="slider-handle" id="slider-handle">&harr;</div>
+    </div>
+
+    <div class="video-controls is-hidden" id="video-controls">
+      <button class="btn btn-primary" id="btn-play" type="button">Play</button>
+      <button class="btn" id="btn-mute" type="button">Sound On</button>
+      <input type="range" id="vid-seek" min="0" max="1000" value="0" aria-label="Video Seek">
+      <span class="timecode" id="vid-time">0:00 / 1:21</span>
     </div>
 
     <div class="controls-bar">
@@ -232,17 +271,30 @@
 
   <script>
     const scenes = [
-      { id: '01_armor',  title: '01. Tsurugi Armor CG',  desc: 'Crisp metallic grain, hammered iron & gold edge detail' },
-      { id: '02_park',   title: '02. Overcast Park BG',  desc: 'Sharp foliage, lamppost silhouette & water reflections' },
-      { id: '03_study',  title: "03. Professor's Study", desc: 'Bookshelves, woodgrain & fine shadow lines' },
-      { id: '04_evcg',   title: '04. Event CG',          desc: 'Clean line art & 2.5x shading detail' },
-      { id: '05_ui',     title: '05. In-Game UI Menu',   desc: 'Razor-sharp settings parchment, sliders & UI labels' },
-      { id: '06_text',   title: '06. HD Font & Text',    desc: 'Crisp 2K typography vs original stock text rendering' },
+      { id: '01_armor',           type: 'image', title: '01. Tsurugi Armor CG',      desc: 'Crisp metallic grain, hammered iron & gold edge detail' },
+      { id: '02_park',            type: 'image', title: '02. Overcast Park BG',      desc: 'Sharp foliage, lamppost silhouette & water reflections' },
+      { id: '03_study',           type: 'image', title: "03. Professor's Study",     desc: 'Bookshelves, woodgrain & fine shadow lines' },
+      { id: '04_evcg',            type: 'image', title: '04. Event CG',              desc: 'Clean line art & 2.5x shading detail' },
+      { id: '05_ui',              type: 'image', title: '05. In-Game UI Menu',       desc: 'Razor-sharp settings parchment, sliders & UI labels' },
+      { id: '06_text',            type: 'image', title: '06. HD Font & Text',        desc: 'Crisp 2K typography vs original stock text rendering' },
+      { id: '07_muramasa_sprite', type: 'image', title: '07. Sansei Muramasa',       desc: 'Character sprite outfit weave, hair highlights & jewelry' },
+      { id: '08_ichijo_sprite',   type: 'image', title: '08. Ayane Ichijo',          desc: 'Crimson Kote gauntlet rivets, uniform & razor-sharp linework' },
+      { id: '09_burning_field',   type: 'image', title: '09. Burning Battlefield',   desc: 'Silver vs Crimson clash, embers & smoky horizon clarity' },
+      { id: '10_crimson_visor',   type: 'image', title: '10. Crimson Armor Visor',   desc: 'Brushed steel scratches & glowing crimson visor gradient' },
+      { id: '11_tea_party',       type: 'image', title: '11. Circuit Tea Party',     desc: 'Crisp character faces, glass highlights & background Tsurugi' },
+      { id: 'mvop',               type: 'video', title: '12. Opening Movie (Video)', desc: 'Live synchronized Original WMV vs 2K HD OP with interactive slider' },
     ];
 
     const tabsEl = document.getElementById('scene-tabs');
     const imgBefore = document.getElementById('img-before');
     const imgAfter = document.getElementById('img-after');
+    const vidBefore = document.getElementById('vid-before');
+    const vidAfter = document.getElementById('vid-after');
+    const videoControls = document.getElementById('video-controls');
+    const btnPlay = document.getElementById('btn-play');
+    const btnMute = document.getElementById('btn-mute');
+    const vidSeek = document.getElementById('vid-seek');
+    const vidTime = document.getElementById('vid-time');
     const stage = document.getElementById('compare-stage');
     const line = document.getElementById('slider-line');
     const handle = document.getElementById('slider-handle');
@@ -252,22 +304,119 @@
 
     let pct = 50;
     let dragging = false;
+    let activeType = 'image';
+    let seekingVideo = false;
+    let rafId = null;
+
+    function fmtTime(sec) {
+      if (!isFinite(sec) || sec < 0) return '0:00';
+      const s = Math.floor(sec);
+      return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    }
 
     function setSplit(val) {
       pct = Math.max(0, Math.min(100, val));
-      imgBefore.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      const clip = `inset(0 ${100 - pct}% 0 0)`;
+      imgBefore.style.clipPath = clip;
+      vidBefore.style.clipPath = clip;
       line.style.left = `${pct}%`;
       handle.style.left = `${pct}%`;
       range.value = Math.round(pct);
       pctLbl.textContent = `${Math.round(pct)}%`;
     }
 
+    function syncTick() {
+      if (activeType !== 'video') {
+        rafId = null;
+        return;
+      }
+      if (vidAfter.readyState >= 2 && vidBefore.readyState >= 2) {
+        if (Math.abs(vidBefore.currentTime - vidAfter.currentTime) > 0.04) {
+          vidBefore.currentTime = vidAfter.currentTime;
+        }
+        if (!vidAfter.paused && vidBefore.paused) {
+          vidBefore.play().catch(() => {});
+        } else if (vidAfter.paused && !vidBefore.paused) {
+          vidBefore.pause();
+        }
+      }
+      if (!seekingVideo && isFinite(vidAfter.duration) && vidAfter.duration > 0) {
+        vidSeek.value = Math.round((vidAfter.currentTime / vidAfter.duration) * 1000);
+        vidTime.textContent = `${fmtTime(vidAfter.currentTime)} / ${fmtTime(vidAfter.duration)}`;
+      }
+      rafId = requestAnimationFrame(syncTick);
+    }
+
+    function playBoth() {
+      if (vidAfter.readyState >= 1 && vidBefore.readyState >= 1) {
+        vidBefore.currentTime = vidAfter.currentTime;
+      }
+      const p1 = vidAfter.play();
+      const p2 = vidBefore.play();
+      Promise.allSettled([p1, p2]).then(() => {
+        btnPlay.textContent = vidAfter.paused ? 'Play' : 'Pause';
+      });
+    }
+
+    function pauseBoth() {
+      vidAfter.pause();
+      vidBefore.pause();
+      btnPlay.textContent = 'Play';
+    }
+
     function selectScene(scene) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.id === scene.id));
-      imgBefore.src = `./showcase_assets/${scene.id}_before.webp`;
-      imgAfter.src = `./showcase_assets/${scene.id}_after.webp`;
+      activeType = scene.type || 'image';
       caption.textContent = scene.desc;
+
+      if (activeType === 'video') {
+        imgBefore.classList.add('is-hidden');
+        imgAfter.classList.add('is-hidden');
+        vidBefore.classList.remove('is-hidden');
+        vidAfter.classList.remove('is-hidden');
+        videoControls.classList.remove('is-hidden');
+
+        if (!vidAfter.dataset.loaded) {
+          vidBefore.src = `./showcase_assets/${scene.id}_before.mp4`;
+          vidAfter.src = `./showcase_assets/${scene.id}_after.mp4`;
+          vidAfter.dataset.loaded = '1';
+        }
+        playBoth();
+        if (!rafId) rafId = requestAnimationFrame(syncTick);
+      } else {
+        pauseBoth();
+        vidBefore.classList.add('is-hidden');
+        vidAfter.classList.add('is-hidden');
+        videoControls.classList.add('is-hidden');
+        imgBefore.classList.remove('is-hidden');
+        imgAfter.classList.remove('is-hidden');
+        imgBefore.src = `./showcase_assets/${scene.id}_before.webp`;
+        imgAfter.src = `./showcase_assets/${scene.id}_after.webp`;
+      }
     }
+
+    btnPlay.addEventListener('click', () => {
+      if (vidAfter.paused) playBoth();
+      else pauseBoth();
+    });
+    btnMute.addEventListener('click', () => {
+      vidAfter.muted = !vidAfter.muted;
+      btnMute.textContent = vidAfter.muted ? 'Muted' : 'Sound On';
+    });
+    vidSeek.addEventListener('pointerdown', () => { seekingVideo = true; });
+    vidSeek.addEventListener('pointerup', () => { seekingVideo = false; });
+    vidSeek.addEventListener('input', e => {
+      if (!isFinite(vidAfter.duration) || vidAfter.duration <= 0) return;
+      const target = (parseFloat(e.target.value) / 1000) * vidAfter.duration;
+      vidAfter.currentTime = target;
+      vidBefore.currentTime = target;
+      vidTime.textContent = `${fmtTime(target)} / ${fmtTime(vidAfter.duration)}`;
+    });
+    vidAfter.addEventListener('loadedmetadata', () => {
+      vidTime.textContent = `${fmtTime(vidAfter.currentTime)} / ${fmtTime(vidAfter.duration)}`;
+    });
+    vidAfter.addEventListener('play', () => { btnPlay.textContent = 'Pause'; });
+    vidAfter.addEventListener('pause', () => { btnPlay.textContent = 'Play'; });
 
     scenes.forEach((sc, idx) => {
       const btn = document.createElement('button');
