@@ -1,5 +1,5 @@
 {
-  "patch_version": "1.0.0",
+  "patch_version": "1.0.1",
   "assets_tag": "assets-v1.0",
   "packs": [
     {
@@ -46,10 +46,10 @@
     },
     {
       "id": "core_patch",
-      "name": "Core Patch v1.0.0 (DLL & Scripts)",
-      "url": "https://github.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/releases/download/assets-v1.0/Core_Patch_v1.0.0.zip",
-      "size": 75389925,
-      "sha256": "0869c9b588a58fa2623ccbcf48f4e119a2431c56a0bc1b095db396ffcf5659fe"
+      "name": "Core Patch v1.0.1 (DLL, Scripts & Poem Fix)",
+      "url": "https://github.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/releases/download/assets-v1.0/Core_Patch_v1.0.1.zip",
+      "size": 78570791,
+      "sha256": "7fc4900000d994a9ade81bdb967e9350457a45c07a55743b980b7117f240363c"
     }
   ]
 }
