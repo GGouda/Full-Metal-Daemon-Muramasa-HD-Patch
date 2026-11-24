@@ -1,50 +1,44 @@
-# Full Metal Daemon Muramasa — HD 2K Remaster Patch
+# Full Metal Daemon Muramasa: 2K HD Patch
 
-Native **2560x1440** lossless visual overhaul, upscaled cutscenes, sharp GDI font rendering, launcher upgrades, and 4 GiB LAA memory stability for **Full Metal Daemon Muramasa** (JAST USA English PC v1.04).
+Play **Full Metal Daemon Muramasa** (JAST USA English PC v1.04) in sharp 2560x1440 resolution. This patch replaces the original 1024x576 artwork, videos, and text with 2K HD versions and fixes memory crashes on modern Windows.
 
----
+## Before and After
 
-## Interactive Before / After Comparison
+These images alternate between the original game and the 2K HD patch. Want to drag a split slider yourself? [Open the interactive comparison page](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html).
 
-> **[Open Interactive Comparison Slider](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/showcase.html)**
-> Drag the split bar across backgrounds, interiors, and Event CGs directly in your browser.
-
-| Stock Original (`1024x576`) | 2K Lossless HD (`2560x1440`) |
+| Tsurugi Armor CG | Overcast Park & Lake |
 | :---: | :---: |
-| ![Shrine Before](https://raw.githubusercontent.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/main/showcase_assets/02_shrine_before.webp) | ![Shrine After](https://raw.githubusercontent.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/main/showcase_assets/02_shrine_after.webp) |
-| ![Event CG Before](https://raw.githubusercontent.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/main/showcase_assets/04_evcg_before.webp) | ![Event CG After](https://raw.githubusercontent.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/main/showcase_assets/04_evcg_after.webp) |
+| ![Tsurugi Armor CG comparison](showcase_assets/01_armor_compare.webp) | ![Overcast Park and Lake comparison](showcase_assets/02_park_compare.webp) |
 
----
+| Professor's Study | Event CG |
+| :---: | :---: |
+| ![Professor's Study comparison](showcase_assets/03_study_compare.webp) | ![Event CG comparison](showcase_assets/04_evcg_compare.webp) |
 
-## Features
+| In-Game Menu | HD Font & Text |
+| :---: | :---: |
+| ![In-Game Menu comparison](showcase_assets/05_ui_compare.webp) | ![HD Font and Text comparison](showcase_assets/06_text_compare.webp) |
 
-- **5,460 Lossless 2K Assets**: Backgrounds, Event CGs, character sprites, effects, and UI upscaled to native **2560x1440** (`lossless WebP`, zero lossy artifacts).
-- **78 Upscaled Cutscenes**: All `.wmv` DX cutscenes upscaled to crisp 2K MP4 playback.
-- **Crisp Typography & Re-Typeset Graphics**: High-res `2.5x` GDI glyph rendering, crisp title subtitle (`FULL METAL DAEMON`), and vector-rendered Lucida Calligraphy opening poem graphics.
-- **4 GiB Memory Patch (`LAA`)**: Automatically enables `LARGE_ADDRESS_AWARE` on `muramasa_en.exe` (with automatic `muramasa_en_stock_backup.exe` backup) + cuts `CMovie` prebuffer RAM overhead to eliminate 32-bit OOM crashes.
-- **Quality-of-Life Launcher**: Adds `2560x1440 (2K HD)` Borderless option, `Upscaled Assets` toggle, and `Skip Intro` option directly inside the stock game launcher.
-- **Fixed UI Hitboxes**: Keeps invisible `*hit.png` hitmasks at logical coordinates so Config checkboxes toggle anywhere inside the box.
+## What You Get
 
----
+- **2K Artwork**: 5,460 backgrounds, Event CGs, character sprites, effects, and menus in 2560x1440.
+- **2K Cutscenes**: 78 in-game videos in 2K.
+- **Sharp Text**: High-resolution dialogue fonts, title logo, and opening poem graphics.
+- **Extra Launcher Options**: Pick 2560x1440 Borderless, toggle HD assets, or skip the intro from the standard game launcher.
+- **Crash Fixes**: Expands memory limits to 4 GiB and keeps a backup of your original `muramasa_en.exe`.
+- **Fixed Menu Clicks**: Config checkboxes register clicks across the entire box.
 
-## Download & Installation (1-Click Auto-Installer)
+## How to Install
 
-1. Download **`Install_Muramasa_HD_Patch.exe`** (`~370 KB`) from [**Latest Releases**](https://github.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/releases/latest).
-2. Run `Install_Muramasa_HD_Patch.exe`.
-3. Click **Browse...** and select your base game folder (where `muramasa_en.exe` is located).
-4. Click **Install HD Patch** — the installer automatically downloads the verified 2K asset packs (`~8.06 GiB` lossless) + latest patch from GitHub Releases, checks SHA-256 hashes, applies everything, and patches `muramasa_en.exe`.
-5. Launch `muramasa_en.exe` as usual and enjoy!
+1. Download **`Install_Muramasa_HD_Patch.exe`** from [Latest Releases](https://github.com/GGouda/Full-Metal-Daemon-Muramasa-HD-Patch/releases/latest) and run it.
+2. Pick your Muramasa game folder (where `muramasa_en.exe` lives) and click **Install HD Patch**.
 
-### Updating Later
+The installer downloads the 2K asset packs (~8.06 GiB), checks file integrity, and patches your game. Launch `muramasa_en.exe` to play.
 
-Re-run any newer `Install_Muramasa_HD_Patch.exe` on your game folder — it checks `.installed_packs.txt`, **skips all `8 GiB` unchanged asset packs**, and downloads only updated patch files in seconds.
+### Updating or Uninstalling
 
-### Uninstalling
+- **Update**: Run a newer `Install_Muramasa_HD_Patch.exe` on the same game folder. It skips the 8 GiB asset packs you have and downloads the updated patch files.
+- **Uninstall**: Open `Install_Muramasa_HD_Patch.exe`, select your game folder, and click **Uninstall Patch**. This restores your original `muramasa_en.exe` and removes the patch files.
 
-Run `Install_Muramasa_HD_Patch.exe`, select your game folder, and click **Uninstall Patch** to remove `hd_assets/` + hooks and restore your original `muramasa_en.exe`.
+## Asset List
 
----
-
-## Asset Verification
-
-- [Full Upscale Asset Dashboard](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/) (`78 / 78` videos & `5,460` images verified).
+Browse the 5,460 images and 78 videos on the [Asset Verification Dashboard](https://ggouda.github.io/Full-Metal-Daemon-Muramasa-HD-Patch/).

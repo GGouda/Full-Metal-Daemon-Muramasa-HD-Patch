@@ -157,16 +157,18 @@
     .label-pill {
       position: absolute;
       top: 14px;
-      padding: 5px 12px;
+      z-index: 10;
+      padding: 6px 14px;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: rgba(0, 0, 0, 0.85);
+      white-space: nowrap;
+      background: rgba(10, 10, 12, 0.88);
       border: 1px solid var(--border);
       pointer-events: none;
     }
-    .label-before { left: 14px; color: var(--muted); }
+    .label-before { left: 14px; color: #d4d4d8; }
     .label-after  { right: 14px; color: #ffffff; border-color: var(--crimson); }
 
     .controls-bar {
@@ -210,8 +212,8 @@
     <div class="tabs" id="scene-tabs"></div>
 
     <div class="compare-stage" id="compare-stage">
-      <img class="img-after" id="img-after" src="./showcase_assets/01_sky_after.webp" alt="2K HD Upscaled">
-      <img class="img-before" id="img-before" src="./showcase_assets/01_sky_before.webp" alt="Original Stock">
+      <img class="img-after" id="img-after" src="./showcase_assets/01_armor_after.webp" alt="2K HD Remaster">
+      <img class="img-before" id="img-before" src="./showcase_assets/01_armor_before.webp" alt="Original Stock">
       <div class="label-pill label-before">Original (1024&times;576)</div>
       <div class="label-pill label-after">2K HD Remaster (2560&times;1440)</div>
       <div class="slider-line" id="slider-line"></div>
@@ -230,10 +232,12 @@
 
   <script>
     const scenes = [
-      { id: '01_sky',    title: '01. Sky Gradient',      desc: 'Banding-free sky & clouds (1024x576 -> 2560x1440)' },
-      { id: '02_shrine', title: '02. Kotoku-in Shrine',  desc: 'Crisp foliage, stonework & lighting detail' },
+      { id: '01_armor',  title: '01. Tsurugi Armor CG',  desc: 'Crisp metallic grain, hammered iron & gold edge detail' },
+      { id: '02_park',   title: '02. Overcast Park BG',  desc: 'Sharp foliage, lamppost silhouette & water reflections' },
       { id: '03_study',  title: "03. Professor's Study", desc: 'Bookshelves, woodgrain & fine shadow lines' },
       { id: '04_evcg',   title: '04. Event CG',          desc: 'Clean line art & 2.5x shading detail' },
+      { id: '05_ui',     title: '05. In-Game UI Menu',   desc: 'Razor-sharp settings parchment, sliders & UI labels' },
+      { id: '06_text',   title: '06. HD Font & Text',    desc: 'Crisp 2K typography vs original stock text rendering' },
     ];
 
     const tabsEl = document.getElementById('scene-tabs');
