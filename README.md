@@ -44,7 +44,6 @@ Model: 4x DAT2 + SD V1b34 Strong
 - **Sharp Text**: High-resolution dialogue fonts, title logo, and opening poem graphics.
 - **Extra Launcher Options**: Pick 2560x1440 Borderless, toggle HD assets, or skip the intro from the standard game launcher.
 - **Crash Fixes**: Expands memory limits to 4 GiB and keeps a backup of your original `muramasa_en.exe`.
-- **Fixed Menu Clicks**: Config checkboxes register clicks across the entire box.
 
 ## How to Install
 
