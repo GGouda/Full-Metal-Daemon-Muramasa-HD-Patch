@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="showcase_assets/cover_banner.webp" alt="Full Metal Daemon Muramasa 2K HD Remaster Patch" width="100%">
+</p>
+
 # Full Metal Daemon Muramasa: 2K HD Patch
 
 Play **Full Metal Daemon Muramasa** (JAST USA English PC v1.04) in sharp 2560x1440 resolution. This patch replaces the original 1024x576 artwork, videos, and text with 2K HD versions and fixes memory crashes on modern Windows.
